@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "809339778941",
+    "project_id": "docafit-app",
+    "storage_bucket": "docafit-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809339778941:android:42c18879f574622113fe14",
+        "android_client_info": {
+          "package_name": "com.example.docafit_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqy4MyW1gyJUgHfgvEp3tJUw2XggixcgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
