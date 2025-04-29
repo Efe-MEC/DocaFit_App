@@ -49,7 +49,7 @@ public class logIn_Act extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(logIn_Act.this, "Logged in as: " + user.getEmail(), Toast.LENGTH_SHORT).show();
 
-                            startActivity(new Intent(logIn_Act.this, welcome_Act.class));
+                            startActivity(new Intent(logIn_Act.this,  mainPage_Act.class));
                             finish();
                         } else {
                             Toast.makeText(logIn_Act.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
