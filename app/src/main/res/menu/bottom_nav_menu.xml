@@ -3,6 +3,12 @@
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
         android:title="Home" />
+
+    <item
+        android:id="@+id/nav_suggestion"
+        android:icon="@drawable/ic_suggestion"
+        android:title="Exercise Suggestion" />
+
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_profile"

@@ -3,9 +3,12 @@ package com.example.docafit_app;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import com.example.docafit_app.fragments.exerciseSuggestion_Frag;
+import com.example.docafit_app.fragments.profile_Frag;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.docafit_app.fragments.home_Frag;
-import com.example.docafit_app.fragments.profile_frag;
+
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
 
@@ -30,7 +33,10 @@ public class mainPage_Act extends AppCompatActivity {
                 if (itemId == R.id.nav_home) {
                     selectedFragment = new home_Frag();
                 } else if (itemId == R.id.nav_profile) {
-                    selectedFragment = new profile_frag();
+                    selectedFragment = new profile_Frag();
+                }
+                else if (itemId == R.id.nav_suggestion) {
+                    selectedFragment = new exerciseSuggestion_Frag();
                 }
 
                 return loadFragment(selectedFragment);
