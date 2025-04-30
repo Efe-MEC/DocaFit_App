@@ -39,7 +39,7 @@ public class logIn_Act extends AppCompatActivity {
             String password = passwordEditText.getText().toString();
 
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(logIn_Act.this, "Please fill all areas", Toast.LENGTH_SHORT).show();
+                Toast.makeText(logIn_Act.this, getString(R.string.toast_fill_all_fields), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -47,18 +47,18 @@ public class logIn_Act extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(logIn_Act.this, "Logged in as: " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(logIn_Act.this, getString(R.string.toast_logged_in, user.getEmail()), Toast.LENGTH_SHORT).show();
 
                             startActivity(new Intent(logIn_Act.this,  mainPage_Act.class));
                             finish();
                         } else {
-                            Toast.makeText(logIn_Act.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(logIn_Act.this, getString(R.string.toast_login_failed, task.getException().getMessage()), Toast.LENGTH_SHORT).show();
                         }
                     });
         });
 
         registerButton.setOnClickListener(v -> {
-            Intent intent = new Intent(logIn_Act.this, signIn_Act.class);  // Doğru SignUp Activity'yi başlatıyoruz
+            Intent intent = new Intent(logIn_Act.this, signIn_Act.class);
             startActivity(intent);
         });
     }

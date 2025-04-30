@@ -1,9 +1,28 @@
 <resources>
     <string name="app_name">Doca Fit</string>
+    <string name="welcome_mes">Welcome to Doca Fit!</string>
+    <string name="email_hint">E-mail</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button">Log In</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="toast_fill_all_fields">Please fill all areas</string>
+    <string name="toast_logged_in">Logged in as: %1$s</string>
+    <string name="toast_login_failed">Login failed: %1$s</string>
+    <string name="toast_password_min">Password should be at least 6 characters</string>
+    <string name="toast_signup_success">Signed up successfully!</string>
+    <string name="toast_signup_failed">Signing up failed: %1$s</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_suggestion">Exercise Suggestion</string>
+    <string name="nav_profile">Profile</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_light">Light</string>
+    <string name="profile_picture_desc">Profile Picture</string>
+    <string name="user_label">User</string>
+    <string name="theme_label">Theme</string>
+    <string name="language_label">Language</string>
+    <string name="change_button">Change</string>
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
 
-    <string-array name="language_options">
-        <item>Türkçe</item>
-        <item>English</item>
-    </string-array>
 
 </resources>

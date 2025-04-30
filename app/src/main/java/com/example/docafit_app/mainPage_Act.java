@@ -1,22 +1,32 @@
 package com.example.docafit_app;
 
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.docafit_app.fragments.home_Frag;
 import com.example.docafit_app.fragments.exerciseSuggestion_Frag;
 import com.example.docafit_app.fragments.profile_Frag;
+import com.example.docafit_app.utils.ThemeUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.example.docafit_app.fragments.home_Frag;
 
-import android.view.MenuItem;
-import androidx.annotation.NonNull;
+import java.util.Locale;
 
 
 public class mainPage_Act extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeUtils.applySavedTheme(this);
+        SharedPreferences preferences = getSharedPreferences("settings", MODE_PRIVATE);
+        String language = preferences.getString("language", "en"); // varsayılan İngilizce
+        setAppLocale(language);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_mainpage);
 
@@ -53,6 +63,14 @@ public class mainPage_Act extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    private void setAppLocale(String localeCode) {
+        Locale locale = new Locale(localeCode);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.setLocale(locale);
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
     }
 }
 

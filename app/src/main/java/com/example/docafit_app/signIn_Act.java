@@ -37,23 +37,23 @@ public class signIn_Act extends AppCompatActivity {
             String password = passwordEditText.getText().toString().trim();
 
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                Toast.makeText(signIn_Act.this, "Please fill every areas", Toast.LENGTH_SHORT).show();
+                Toast.makeText(signIn_Act.this, getString(R.string.toast_fill_all_fields), Toast.LENGTH_SHORT).show();
                 return;
             }
 
             if (password.length() < 6) {
-                Toast.makeText(signIn_Act.this, "Password should be at least 6 characters", Toast.LENGTH_SHORT).show();
+                Toast.makeText(signIn_Act.this, getString(R.string.toast_password_min), Toast.LENGTH_SHORT).show();
                 return;
             }
 
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(signIn_Act.this, "Signed up successfully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(signIn_Act.this, getString(R.string.toast_signup_success), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(signIn_Act.this, logIn_Act.class));
                             finish();
                         } else {
-                            Toast.makeText(signIn_Act.this, "Signing up failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(signIn_Act.this,  getString(R.string.toast_signup_failed, task.getException().getMessage()), Toast.LENGTH_SHORT).show();
                         }
                     });
         });

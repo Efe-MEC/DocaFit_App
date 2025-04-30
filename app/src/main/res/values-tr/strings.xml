@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DocaFit</string>
+    <string name="welcome_mes">Hoş geldiniz!</string>
+    <string name="email_hint">E-posta</string>
+    <string name="password_hint">Şifre</string>
+    <string name="login_button">Giriş Yap</string>
+    <string name="signup_button">Kayıt Ol</string>
+    <string name="toast_fill_all_fields">Lütfen tüm alanları doldurun</string>
+    <string name="toast_logged_in">%1$s olarak giriş yapıldı</string>
+    <string name="toast_login_failed">Giriş başarısız: %1$s</string>
+    <string name="toast_password_min">Şifre en az 6 karakter olmalıdır</string>
+    <string name="toast_signup_success">Kayıt başarıyla tamamlandı!</string>
+    <string name="toast_signup_failed">Kayıt başarısız: %1$s</string>
+    <string name="nav_home">Ana Sayfa</string>
+    <string name="nav_suggestion">Egzersiz Önerisi</string>
+    <string name="nav_profile">Profil</string>
+    <string name="theme_dark">Koyu</string>
+    <string name="theme_light">Açık</string>
+    <string name="profile_picture_desc">Profil Resmi</string>
+    <string name="user_label">Kullanıcı</string>
+    <string name="theme_label">Tema</string>
+    <string name="language_label">Dil</string>
+    <string name="change_button">Değiştir</string>
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+
+
+</resources>
