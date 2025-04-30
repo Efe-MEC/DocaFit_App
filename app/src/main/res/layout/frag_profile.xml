@@ -74,4 +74,12 @@
             android:textColor="@color/button_text" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/button_text"/>
+
 </LinearLayout>

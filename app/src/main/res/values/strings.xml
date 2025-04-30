@@ -13,6 +13,7 @@
     <string name="toast_signup_failed">Signing up failed: %1$s</string>
     <string name="nav_home">Home</string>
     <string name="nav_suggestion">Exercise Suggestion</string>
+    <string name="nav_tracking">Activity Tracking</string>
     <string name="nav_profile">Profile</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_light">Light</string>
@@ -23,6 +24,6 @@
     <string name="change_button">Change</string>
     <string name="language_english">English</string>
     <string name="language_turkish">Türkçe</string>
-
+    <string name="logout">Log Out</string>
 
 </resources>

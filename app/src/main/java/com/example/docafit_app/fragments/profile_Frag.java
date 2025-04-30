@@ -13,6 +13,8 @@ import com.example.docafit_app.utils.ThemeUtils;
 
 import androidx.fragment.app.Fragment;
 import com.example.docafit_app.R;
+import com.example.docafit_app.logIn_Act;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Locale;
 
@@ -21,12 +23,15 @@ public class profile_Frag extends Fragment {
     private Button themeToggleButton;
     private Button languageToggleButton;
 
+    private Button logoutButton;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_profile, container, false);
 
         themeToggleButton = view.findViewById(R.id.themeToggleButton);
         languageToggleButton = view.findViewById(R.id.languageToggleButton);
+        logoutButton = view.findViewById(R.id.logoutButton);
 
         // Mevcut tema modunu kontrol etme
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
@@ -54,6 +59,15 @@ public class profile_Frag extends Fragment {
 
         // Dil butonunun mevcut dilini kontrol etme ve güncelleme
         updateLanguageButtonText();
+
+        logoutButton.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();  // Firebase oturumunu kapatma
+
+            // Login ekranına yönlendirme
+            Intent intent = new Intent(requireActivity(), logIn_Act.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Geri gitmeyi engelle
+            startActivity(intent);
+        });
 
         return view;
     }

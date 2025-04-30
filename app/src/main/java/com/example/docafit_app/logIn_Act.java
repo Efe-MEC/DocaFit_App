@@ -28,6 +28,13 @@ public class logIn_Act extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            startActivity(new Intent(logIn_Act.this, mainPage_Act.class));
+            finish();
+            return;
+        }
+
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButton = findViewById(R.id.loginButton);
@@ -48,8 +55,7 @@ public class logIn_Act extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(logIn_Act.this, getString(R.string.toast_logged_in, user.getEmail()), Toast.LENGTH_SHORT).show();
-
-                            startActivity(new Intent(logIn_Act.this,  mainPage_Act.class));
+                            startActivity(new Intent(logIn_Act.this, mainPage_Act.class));
                             finish();
                         } else {
                             Toast.makeText(logIn_Act.this, getString(R.string.toast_login_failed, task.getException().getMessage()), Toast.LENGTH_SHORT).show();

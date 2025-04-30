@@ -14,6 +14,7 @@
     <string name="toast_signup_failed">Kayıt başarısız: %1$s</string>
     <string name="nav_home">Ana Sayfa</string>
     <string name="nav_suggestion">Egzersiz Önerisi</string>
+    <string name="nav_tracking">Etkinlik Takibi</string>
     <string name="nav_profile">Profil</string>
     <string name="theme_dark">Koyu</string>
     <string name="theme_light">Açık</string>
@@ -24,6 +25,6 @@
     <string name="change_button">Değiştir</string>
     <string name="language_english">English</string>
     <string name="language_turkish">Türkçe</string>
-
+    <string name="logout">Oturumu Kapat</string>
 
 </resources>
