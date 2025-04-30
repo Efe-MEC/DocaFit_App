@@ -38,14 +38,14 @@ public class welcome_Act extends AppCompatActivity {
 
             startActivity(intent);
             finish();
-        }, 500);
-    }
-
-    private void setAppLocale(String localeCode) {
-        Locale locale = new Locale(localeCode);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.setLocale(locale);
-        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
-    }
+    }, 500);
 }
+
+private void setAppLocale(String localeCode) {
+    Locale locale = new Locale(localeCode);
+    Locale.setDefault(locale);
+    Configuration config = new Configuration();
+    config.setLocale(locale);
+    getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+}
+ }
