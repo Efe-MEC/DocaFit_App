@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class logIn_Act extends AppCompatActivity {
 
     private EditText emailEditText, passwordEditText;
-    private Button loginButton, registerButton;
+    private Button loginButton, registerButton, forgotPasswordButton;
     private ImageView logoImageView;
 
     private FirebaseAuth mAuth;
@@ -39,6 +39,7 @@ public class logIn_Act extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButton = findViewById(R.id.loginButton);
         registerButton = findViewById(R.id.registerButton);
+        forgotPasswordButton = findViewById(R.id.forgotPasswordButton);  // <-- eklenen buton
         logoImageView = findViewById(R.id.logoImageView);
 
         loginButton.setOnClickListener(v -> {
@@ -66,6 +67,28 @@ public class logIn_Act extends AppCompatActivity {
         registerButton.setOnClickListener(v -> {
             Intent intent = new Intent(logIn_Act.this, signIn_Act.class);
             startActivity(intent);
+        });
+
+        forgotPasswordButton.setOnClickListener(v -> {
+            String email = emailEditText.getText().toString().trim();
+
+            if (email.isEmpty()) {
+                Toast.makeText(logIn_Act.this, getString(R.string.toast_fill_all_fields), Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            mAuth.sendPasswordResetEmail(email)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(logIn_Act.this,
+                                    getString(R.string.reset_email_sent, email),
+                                    Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(logIn_Act.this,
+                                    getString(R.string.reset_email_failed, task.getException().getMessage()),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
         });
     }
 }

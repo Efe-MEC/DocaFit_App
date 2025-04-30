@@ -25,5 +25,8 @@
     <string name="language_english">English</string>
     <string name="language_turkish">Türkçe</string>
     <string name="logout">Log Out</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="reset_email_sent">Password reset mail sent: %1$s</string>
+    <string name="reset_email_failed">E-mail could not send: %1$s</string>
 
 </resources>

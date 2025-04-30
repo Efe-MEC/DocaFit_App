@@ -26,5 +26,8 @@
     <string name="language_english">English</string>
     <string name="language_turkish">Türkçe</string>
     <string name="logout">Oturumu Kapat</string>
+    <string name="forgot_password">Şifremi unuttum</string>
+    <string name="reset_email_sent">Şifre sıfırlama e-postası gönderildi: %1$s</string>
+    <string name="reset_email_failed">E-posta gönderilemedi: %1$s</string>
 
 </resources>

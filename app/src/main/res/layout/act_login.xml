@@ -45,4 +45,13 @@
         android:layout_marginTop="8dp"
         android:textColor="@color/button_text"
         android:backgroundTint="@color/red"/>
+
+    <Button
+        android:id="@+id/forgotPasswordButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forgot_password"
+        android:background="@android:color/transparent"
+        android:textColor="@color/blue"
+        android:layout_marginTop="12dp" />
 </LinearLayout>

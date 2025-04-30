@@ -10,5 +10,6 @@
     <color name="red">#C10505</color>
     <color name="button_text">#FFFFFF</color>
     <color name="gray">#FF6F6F6F</color>
+    <color name="blue">#FF3F8FCC</color>
 
 </resources>
