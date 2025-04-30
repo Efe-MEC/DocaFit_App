@@ -33,5 +33,6 @@
         android:layout_height="wrap_content"
         android:text="Sign Up"
         android:backgroundTint="@color/red"
+        android:textColor="@color/button_text"
         android:layout_marginTop="20dp" />
 </LinearLayout>
