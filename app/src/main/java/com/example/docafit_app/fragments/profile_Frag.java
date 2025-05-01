@@ -33,7 +33,6 @@ public class profile_Frag extends Fragment {
         languageToggleButton = view.findViewById(R.id.languageToggleButton);
         logoutButton = view.findViewById(R.id.logoutButton);
 
-        // Mevcut tema modunu kontrol etme
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
             themeToggleButton.setText(getString(R.string.theme_dark));
@@ -41,29 +40,25 @@ public class profile_Frag extends Fragment {
             themeToggleButton.setText(getString(R.string.theme_light));
         }
 
-        // Tema değiştirme butonuna tıklama
         themeToggleButton.setOnClickListener(v -> {
             ThemeUtils.toggleTheme(requireContext());
             requireActivity().recreate();
         });
 
-        // Dil değiştirme butonuna tıklama
         languageToggleButton.setOnClickListener(v -> {
             String currentLanguage = Locale.getDefault().getLanguage();
             if (currentLanguage.equals("en")) {
-                setLocale("tr");  // Türkçe'ye geçiş
+                setLocale("tr");
             } else {
-                setLocale("en");  // İngilizce'ye geçiş
+                setLocale("en");
             }
         });
 
-        // Dil butonunun mevcut dilini kontrol etme ve güncelleme
         updateLanguageButtonText();
 
         logoutButton.setOnClickListener(v -> {
-            FirebaseAuth.getInstance().signOut();  // Firebase oturumunu kapatma
+            FirebaseAuth.getInstance().signOut();
 
-            // Login ekranına yönlendirme
             Intent intent = new Intent(requireActivity(), logIn_Act.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Geri gitmeyi engelle
             startActivity(intent);
@@ -72,29 +67,23 @@ public class profile_Frag extends Fragment {
         return view;
     }
 
-    // Dil değiştirme fonksiyonu
     public void setLocale(String localeCode) {
-        // Dil tercihini SharedPreferences'a kaydetme
         SharedPreferences preferences = requireContext().getSharedPreferences("settings", requireContext().MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("language", localeCode);
         editor.apply();
 
-        // Yeni dili ayarlama
         Locale locale = new Locale(localeCode);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
         requireContext().getResources().updateConfiguration(config, requireContext().getResources().getDisplayMetrics());
 
-        // Dil değişikliği sonrasında uygulama yeniden başlatılabilir
-        // Yeni dilin uygulandığı anı görmek için ilgili aktiviteyi yeniden başlatma
         Intent intent = requireActivity().getIntent();
         requireActivity().finish();
         startActivity(intent);
     }
 
-    // Dil butonunun metnini güncelleme fonksiyonu
     private void updateLanguageButtonText() {
         String currentLanguage = Locale.getDefault().getLanguage();
         if (currentLanguage.equals("en")) {

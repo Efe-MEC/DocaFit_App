@@ -23,10 +23,8 @@ public class ThemeUtils {
                 ? AppCompatDelegate.MODE_NIGHT_NO
                 : AppCompatDelegate.MODE_NIGHT_YES;
 
-        // Kaydet
         preferences.edit().putInt(KEY_THEME, newMode).apply();
 
-        // Uygula
         AppCompatDelegate.setDefaultNightMode(newMode);
     }
 }
