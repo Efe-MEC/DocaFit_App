@@ -29,5 +29,20 @@
     <string name="forgot_password">Şifremi unuttum</string>
     <string name="reset_email_sent">Şifre sıfırlama e-postası gönderildi: %1$s</string>
     <string name="reset_email_failed">E-posta gönderilemedi: %1$s</string>
+    <string name="area_spinner_label">Çalışmak istediğiniz bölgeyi seçin</string>
+    <string name="suggestion_button_label">Egzersiz Öner</string>
+
+    <string-array name="area_list">
+        <item>Göğüs</item>
+        <item>Sırt</item>
+        <item>Kalça</item>
+        <item>Karın</item>
+        <item>Pazı</item>
+        <item>Omuz</item>
+        <item>Triceps</item>
+        <item>Çiğ_kirişler</item>
+        <item>Baldırlar</item>
+        <item>Ön kollar</item>
+    </string-array>
 
 </resources>

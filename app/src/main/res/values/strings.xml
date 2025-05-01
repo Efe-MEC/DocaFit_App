@@ -28,5 +28,20 @@
     <string name="forgot_password">Forgot password</string>
     <string name="reset_email_sent">Password reset mail sent: %1$s</string>
     <string name="reset_email_failed">E-mail could not send: %1$s</string>
+    <string name="area_spinner_label">Select the area you want to work</string>
+    <string name="suggestion_button_label">Suggest Exercise</string>
+
+    <string-array name="area_list">
+        <item>Chest</item>
+        <item>Back</item>
+        <item>Glutes</item>
+        <item>Abs</item>
+        <item>Biceps</item>
+        <item>Shoulder</item>
+        <item>Triceps</item>
+        <item>Ham_strings</item>
+        <item>Calves</item>
+        <item>Forearms</item>
+    </string-array>
 
 </resources>
