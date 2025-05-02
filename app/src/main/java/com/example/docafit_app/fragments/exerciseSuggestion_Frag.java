@@ -66,7 +66,7 @@ public class exerciseSuggestion_Frag extends Fragment {
         exercises.put("Shoulder", Arrays.asList("Overhead Press", "Lateral Raise", "Rear Delt Fly", "Face Pull", "Arnold Press", "Shoulder Press"));
         exercises.put("Back", Arrays.asList("Barbell Row", "Lat Pulldown", "Pull-up", "Chin-up", "Cable Pullover", "Shrugs", "Deadlift"));
         exercises.put("Calves", Arrays.asList("Seated Calf Raise", "Standing Calf Raise", "Leg Press Calf Raise"));
-        exercises.put("Ham-Strings", Arrays.asList("Seated Leg Curl", "Back Extension", "Deadlift", "Nordic Curl", "Lying Leg Curl"));
+        exercises.put("HamStrings", Arrays.asList("Seated Leg Curl", "Back Extension", "Deadlift", "Nordic Curl", "Lying Leg Curl"));
         exercises.put("Biceps", Arrays.asList("Preacher Curl", "Cable Curl", "Incline Curl", "Hammer Curl", "Standing Curl"));
         exercises.put("Triceps", Arrays.asList("Pushdown", "Skull Crusher", "Close Grip Bench", "Overhead Extension", "Kickback"));
         exercises.put("Forearms", Arrays.asList("Wrist Curl", "Wrist Extension", "Plate Hold"));

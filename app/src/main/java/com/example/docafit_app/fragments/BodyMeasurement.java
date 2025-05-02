@@ -16,11 +16,18 @@ public class BodyMeasurement {
     public String date; // yyyy-MM-dd
 
     public float calculateBodyFatPercentage() {
-        // Basit yağ oranı formülü (örn. Navy Method erkek için)
-        float numerator = 495f;
-        float denominator = 1.0324f - 0.19077f * (float)Math.log10(waist - neck) + 0.15456f * (float)Math.log10(height);
-        return numerator / denominator - 450f;
+        try {
+            float waistNeckDiff = waist - neck;
+            if (waistNeckDiff <= 0 || height <= 0) return 0f;
+
+            float denominator = 1.0324f - 0.19077f * (float)Math.log10(waistNeckDiff)
+                    + 0.15456f * (float)Math.log10(height);
+            return 495f / denominator - 450f;
+        } catch (Exception e) {
+            return 0f;
+        }
     }
+
 
     public float getWeight() {
         return weight;

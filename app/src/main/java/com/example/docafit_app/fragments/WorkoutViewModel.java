@@ -13,8 +13,8 @@ import java.util.concurrent.Executors;
 
 public class WorkoutViewModel extends AndroidViewModel {
 
-    private WorkoutDao workoutDao;
-    private Executor executor;  // ExecutorService'i ekliyoruz
+    private final WorkoutDao workoutDao;
+    private final Executor executor;  // ExecutorService'i ekliyoruz
 
     // Constructor
     public WorkoutViewModel(@NonNull Application application) {
