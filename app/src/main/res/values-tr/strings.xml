@@ -39,6 +39,12 @@
     <string name="edit_profile">Profili Düzenle</string>
     <string name="gender_text">Cinsiyet</string>
 
+    <string-array name="gender_options">
+        <item>Erkek</item>
+        <item>Kadın</item>
+        <item>Diğer</item>
+    </string-array>
+
     <string-array name="area_list">
         <item>Göğüs</item>
         <item>Sırt</item>

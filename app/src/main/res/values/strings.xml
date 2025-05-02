@@ -38,6 +38,12 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="gender_text">Gender</string>
 
+    <string-array name="gender_options">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
     <string-array name="area_list">
         <item>Chest</item>
         <item>Back</item>

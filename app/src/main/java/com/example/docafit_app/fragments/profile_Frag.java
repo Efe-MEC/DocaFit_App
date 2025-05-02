@@ -19,6 +19,8 @@ import com.example.docafit_app.R;
 import com.example.docafit_app.logIn_Act;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Locale;
 
@@ -64,6 +66,20 @@ public class profile_Frag extends Fragment {
             } else {
                 userTextView.setText("User");
             }
+
+            DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+            databaseRef.child("gender").get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    String gender = task.getResult().getValue(String.class);
+                    if (gender != null) {
+                        genderTextView.setText(gender);
+                    } else {
+                        genderTextView.setText("Not specified");
+                    }
+                } else {
+                    genderTextView.setText("Error");
+                }
+            });
         }
 
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;

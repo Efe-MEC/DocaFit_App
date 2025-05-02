@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class signIn_Act extends AppCompatActivity {
 
@@ -55,15 +56,24 @@ public class signIn_Act extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
+                                String uid = user.getUid();
+                                String defaultGender = "";
+
                                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                         .setDisplayName(username)
                                         .build();
 
                                 user.updateProfile(profileUpdates).addOnCompleteListener(updateTask -> {
                                     if (updateTask.isSuccessful()) {
-                                        Toast.makeText(signIn_Act.this, getString(R.string.toast_signup_success), Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(signIn_Act.this, logIn_Act.class));
-                                        finish();
+                                        FirebaseDatabase.getInstance().getReference("Users")
+                                                .child(uid)
+                                                .child("gender")
+                                                .setValue(defaultGender)
+                                                .addOnCompleteListener(genderTask -> {
+                                                    Toast.makeText(signIn_Act.this, getString(R.string.toast_signup_success), Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(signIn_Act.this, logIn_Act.class));
+                                                    finish();
+                                                });
                                     } else {
                                         Toast.makeText(signIn_Act.this, getString(R.string.toast_signup_failed, updateTask.getException().getMessage()), Toast.LENGTH_SHORT).show();
                                     }

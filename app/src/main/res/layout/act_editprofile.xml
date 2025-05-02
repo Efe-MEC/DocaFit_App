@@ -31,7 +31,14 @@
             android:layout_height="wrap_content"
             android:hint="@string/username"
             android:layout_marginTop="16dp"
-            android:inputType="textPersonName"/>
+            android:inputType="textPersonName" />
+
+        <Spinner
+            android:id="@+id/genderSpinner"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:spinnerMode="dropdown" />
 
         <Button
             android:id="@+id/saveButton"
