@@ -28,7 +28,7 @@
         <EditText
             android:id="@+id/nameEditText"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:hint="@string/username"
             android:layout_marginTop="16dp"
             android:inputType="textPersonName" />
@@ -36,7 +36,7 @@
         <Spinner
             android:id="@+id/genderSpinner"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="16dp"
             android:spinnerMode="dropdown" />
 

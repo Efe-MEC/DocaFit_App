@@ -1,22 +1,28 @@
 package com.example.docafit_app.fragments.profileUtils;
 
-import com.example.docafit_app.R;
-
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.docafit_app.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class editProfile_Act extends AppCompatActivity {
 
@@ -39,14 +45,60 @@ public class editProfile_Act extends AppCompatActivity {
         saveButton = findViewById(R.id.saveButton);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user == null) {
+            Toast.makeText(this, "Kullanıcı bulunamadı", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
         databaseRef = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
 
-        if (user != null) {
-            nameEditText.setText(user.getDisplayName());
-            if (user.getPhotoUrl() != null) {
-                Glide.with(this).load(user.getPhotoUrl()).into(profileImageView);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(
+                this, android.R.layout.simple_spinner_item,
+                getResources().getStringArray(R.array.gender_options)) {
+
+            @Override
+            public boolean isEnabled(int position) {
+                return position != 0;
             }
+
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView tv = (TextView) view;
+                if (position == 0) {
+                    tv.setTextColor(getResources().getColor(android.R.color.darker_gray));
+                } else {
+                    tv.setTextColor(getResources().getColor(android.R.color.black));
+                }
+                return view;
+            }
+        };
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        genderSpinner.setAdapter(adapter);
+
+        nameEditText.setText(user.getDisplayName());
+        if (user.getPhotoUrl() != null) {
+            Glide.with(this).load(user.getPhotoUrl()).into(profileImageView);
         }
+
+        databaseRef.child("gender").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                String gender = snapshot.getValue(String.class);
+                if (gender != null) {
+                    int position = adapter.getPosition(gender);
+                    genderSpinner.setSelection(position >= 0 ? position : 0);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Toast.makeText(editProfile_Act.this, "Veri alınamadı", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         saveButton.setOnClickListener(v -> saveProfileChanges());
     }
@@ -54,6 +106,16 @@ public class editProfile_Act extends AppCompatActivity {
     private void saveProfileChanges() {
         String newName = nameEditText.getText().toString().trim();
         String gender = genderSpinner.getSelectedItem().toString();
+
+        if (newName.isEmpty()) {
+            Toast.makeText(this, "İsim boş olamaz", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (genderSpinner.getSelectedItemPosition() == 0) {
+            Toast.makeText(this, "Lütfen bir cinsiyet seçin", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                 .setDisplayName(newName)

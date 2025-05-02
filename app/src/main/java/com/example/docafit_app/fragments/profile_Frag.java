@@ -10,11 +10,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.content.res.Configuration;
+import android.util.Log;
 
 import com.example.docafit_app.fragments.profileUtils.editProfile_Act;
 import com.example.docafit_app.utils.ThemeUtils;
 
 import androidx.fragment.app.Fragment;
+
 import com.example.docafit_app.R;
 import com.example.docafit_app.logIn_Act;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,7 +48,7 @@ public class profile_Frag extends Fragment {
 
         emailTextView = view.findViewById(R.id.email);
         userTextView = view.findViewById(R.id.username);
-        genderTextView = view.findViewById(R.id.gender);
+        genderTextView = view.findViewById(R.id.gender); // Bu satır önemli
 
         themeToggleButton.setGravity(Gravity.CENTER);
         languageToggleButton.setGravity(Gravity.CENTER);
@@ -64,20 +66,23 @@ public class profile_Frag extends Fragment {
             if (displayName != null && !displayName.isEmpty()) {
                 userTextView.setText(displayName);
             } else {
-                userTextView.setText("User");
+                userTextView.setText(getString(R.string.user_label));
             }
 
             DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
             databaseRef.child("gender").get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     String gender = task.getResult().getValue(String.class);
-                    if (gender != null) {
+                    Log.d("GenderCheck", "Gelen gender: " + gender);
+
+                    if (gender != null && !gender.equalsIgnoreCase(getString(R.string.choose_gender))) {
                         genderTextView.setText(gender);
                     } else {
-                        genderTextView.setText("Not specified");
+                        genderTextView.setText(getString(R.string.not_specified));
                     }
                 } else {
-                    genderTextView.setText("Error");
+                    Log.e("GenderCheck", "Firebase hata: ", task.getException());
+                    genderTextView.setText(getString(R.string.fail));
                 }
             });
         }

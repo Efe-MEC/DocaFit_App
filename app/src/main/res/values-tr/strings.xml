@@ -38,8 +38,11 @@
     <string name="fail">Hata oluştu</string>
     <string name="edit_profile">Profili Düzenle</string>
     <string name="gender_text">Cinsiyet</string>
+    <string name="choose_gender">Cinsiyet Seç</string>
+    <string name="not_specified">Belirtilmemiş</string>
 
     <string-array name="gender_options">
+        <item>Cinsiyet Seç</item>
         <item>Erkek</item>
         <item>Kadın</item>
         <item>Diğer</item>
