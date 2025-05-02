@@ -31,6 +31,13 @@
     <string name="reset_email_failed">E-posta gönderilemedi: %1$s</string>
     <string name="area_spinner_label">Çalışmak istediğiniz bölgeyi seçin</string>
     <string name="suggestion_button_label">Egzersiz Öner</string>
+    <string name="select_image">Resim Seç</string>
+    <string name="username">İsim</string>
+    <string name="save">Kaydet</string>
+    <string name="profile_edit_suc">Profil başarıyla güncellendi</string>
+    <string name="fail">Hata oluştu</string>
+    <string name="edit_profile">Profili Düzenle</string>
+    <string name="gender_text">Cinsiyet</string>
 
     <string-array name="area_list">
         <item>Göğüs</item>

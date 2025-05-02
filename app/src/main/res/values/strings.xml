@@ -30,6 +30,13 @@
     <string name="reset_email_failed">E-mail could not send: %1$s</string>
     <string name="area_spinner_label">Select the area you want to work</string>
     <string name="suggestion_button_label">Suggest Exercise</string>
+    <string name="select_image">Select Image</string>
+    <string name="username">Name</string>
+    <string name="save">Save</string>
+    <string name="profile_edit_suc">Profile edited successfully</string>
+    <string name="fail">Failed</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="gender_text">Gender</string>
 
     <string-array name="area_list">
         <item>Chest</item>

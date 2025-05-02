@@ -3,18 +3,22 @@ package com.example.docafit_app.fragments;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.content.res.Configuration;
 
+import com.example.docafit_app.fragments.profileUtils.editProfile_Act;
 import com.example.docafit_app.utils.ThemeUtils;
 
 import androidx.fragment.app.Fragment;
 import com.example.docafit_app.R;
 import com.example.docafit_app.logIn_Act;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Locale;
 
@@ -22,8 +26,12 @@ public class profile_Frag extends Fragment {
 
     private Button themeToggleButton;
     private Button languageToggleButton;
-
     private Button logoutButton;
+    private Button editProfileButton;
+
+    private TextView emailTextView;
+    private TextView userTextView;
+    private TextView genderTextView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +40,31 @@ public class profile_Frag extends Fragment {
         themeToggleButton = view.findViewById(R.id.themeToggleButton);
         languageToggleButton = view.findViewById(R.id.languageToggleButton);
         logoutButton = view.findViewById(R.id.logoutButton);
+        editProfileButton = view.findViewById(R.id.edit_profile_button);
+
+        emailTextView = view.findViewById(R.id.email);
+        userTextView = view.findViewById(R.id.username);
+        genderTextView = view.findViewById(R.id.gender);
+
+        themeToggleButton.setGravity(Gravity.CENTER);
+        languageToggleButton.setGravity(Gravity.CENTER);
+        logoutButton.setGravity(Gravity.CENTER);
+        editProfileButton.setGravity(Gravity.CENTER);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String email = user.getEmail();
+            if (email != null) {
+                emailTextView.setText(email);
+            }
+
+            String displayName = user.getDisplayName();
+            if (displayName != null && !displayName.isEmpty()) {
+                userTextView.setText(displayName);
+            } else {
+                userTextView.setText("User");
+            }
+        }
 
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
@@ -58,9 +91,13 @@ public class profile_Frag extends Fragment {
 
         logoutButton.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
-
             Intent intent = new Intent(requireActivity(), logIn_Act.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Geri gitmeyi engelle
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        });
+
+        editProfileButton.setOnClickListener(v -> {
+            Intent intent = new Intent(requireActivity(), editProfile_Act.class);
             startActivity(intent);
         });
 
