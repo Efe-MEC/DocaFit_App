@@ -155,7 +155,7 @@
         <Button
             android:id="@+id/logoutButton"
             android:layout_width="175dp"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:text="@string/logout"
             android:layout_marginTop="16dp"
             android:textColor="@color/button_text"/>
@@ -163,10 +163,10 @@
         <Button
             android:id="@+id/deleteAccountButton"
             android:layout_width="175dp"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:text="@string/delete_account"
             android:gravity="center"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:textColor="@color/button_text"/>
 
     </LinearLayout>
