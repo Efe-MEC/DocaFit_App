@@ -28,7 +28,6 @@
     <string name="forgot_password">Forgot password</string>
     <string name="reset_email_sent">Password reset mail sent: %1$s</string>
     <string name="reset_email_failed">E-mail could not send: %1$s</string>
-    <string name="area_spinner_label">Select the area you want to work</string>
     <string name="suggestion_button_label">Suggest Exercise</string>
     <string name="select_image">Select Image</string>
     <string name="username">Name</string>
@@ -56,6 +55,8 @@
     <string name="no">No</string>
     <string name="cancel">Cancel</string>
     <string name="confirm">Confirm</string>
+    <string name="area_spinner_label">Select Area</string>
+    <string name="suggested_exercise">Suggested Exercise</string>
 
 
 

@@ -29,8 +29,6 @@
     <string name="forgot_password">Şifremi unuttum</string>
     <string name="reset_email_sent">Şifre sıfırlama e-postası gönderildi: %1$s</string>
     <string name="reset_email_failed">E-posta gönderilemedi: %1$s</string>
-    <string name="area_spinner_label">Çalışmak istediğiniz bölgeyi seçin</string>
-    <string name="suggestion_button_label">Egzersiz Öner</string>
     <string name="select_image">Resim Seç</string>
     <string name="username">İsim</string>
     <string name="save">Kaydet</string>
@@ -57,8 +55,9 @@
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
     <string name="confirm">Onayla</string>
-
-
+    <string name="area_spinner_label">Bölge Seçin</string>
+    <string name="suggestion_button_label">Egzersiz Öner</string>
+    <string name="suggested_exercise">Önerilen Egzersiz</string>
 
     <string-array name="gender_options">
         <item>Cinsiyet Seç</item>
