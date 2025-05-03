@@ -1,24 +1,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center"
+    android:gravity="top"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/logoImageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginBottom="75dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="0dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo"
+        android:layout_gravity="center_horizontal"/>
 
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/email_hint"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:layout_gravity="center_horizontal"/>
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -26,7 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:hint="@string/password_hint"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:layout_gravity="center_horizontal"/>
 
     <Button
         android:id="@+id/loginButton"
@@ -35,7 +39,8 @@
         android:layout_marginTop="30dp"
         android:text="@string/login_button"
         android:textColor="@color/button_text"
-        android:backgroundTint="@color/red"/>
+        android:backgroundTint="@color/red"
+        android:layout_gravity="center_horizontal"/>
 
     <Button
         android:id="@+id/registerButton"
@@ -44,7 +49,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textColor="@color/button_text"
-        android:backgroundTint="@color/red"/>
+        android:backgroundTint="@color/red"
+        android:layout_gravity="center_horizontal"/>
 
     <Button
         android:id="@+id/forgotPasswordButton"
@@ -53,5 +59,6 @@
         android:text="@string/forgot_password"
         android:background="@android:color/transparent"
         android:textColor="@color/blue"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="12dp"
+        android:layout_gravity="center_horizontal"/>
 </LinearLayout>
