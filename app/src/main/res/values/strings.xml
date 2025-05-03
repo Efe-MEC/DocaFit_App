@@ -57,6 +57,19 @@
     <string name="confirm">Confirm</string>
     <string name="area_spinner_label">Select Area</string>
     <string name="suggested_exercise">Suggested Exercise</string>
+    <string name="fat_ratio_calculation_title">Fat Ratio Calculation</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="height_hint">Height (cm)</string>
+    <string name="neck_hint">Neck (cm)</string>
+    <string name="waist_hint">Waist (cm)</string>
+    <string name="hip_hint">Hip (cm)</string>
+    <string name="calculate_body_fat_button">Calculate Your Bodyfat</string>
+    <string name="fat_rate_result">Fat Rate: --</string>
+    <string name="lift_tracking_title">Lift Tracking</string>
+    <string name="weight_hint">Weight (kg)</string>
+    <string name="reps_hint">Reps</string>
+    <string name="save_set_button">Save Set</string>
 
 
 

@@ -58,6 +58,19 @@
     <string name="area_spinner_label">Bölge Seçin</string>
     <string name="suggestion_button_label">Egzersiz Öner</string>
     <string name="suggested_exercise">Önerilen Egzersiz</string>
+    <string name="fat_ratio_calculation_title">Yağ Oranı Hesaplama</string>
+    <string name="male">Erkek</string>
+    <string name="female">Kadın</string>
+    <string name="height_hint">Boy (cm)</string>
+    <string name="neck_hint">Boyun (cm)</string>
+    <string name="waist_hint">Bel (cm)</string>
+    <string name="hip_hint">Kalça (cm)</string>
+    <string name="calculate_body_fat_button">Yağ Oranın Hesapla</string>
+    <string name="fat_rate_result">Yağ Oranı: --</string>
+    <string name="lift_tracking_title">Egzersiz Takibi</string>
+    <string name="weight_hint">Ağırlık (kg)</string>
+    <string name="reps_hint">Tekrar</string>
+    <string name="save_set_button">Seti Kaydet</string>
 
     <string-array name="gender_options">
         <item>Cinsiyet Seç</item>
