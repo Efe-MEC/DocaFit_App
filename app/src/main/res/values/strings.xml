@@ -74,9 +74,17 @@
         <item>Biceps</item>
         <item>Shoulder</item>
         <item>Triceps</item>
-        <item>Ham_strings</item>
+        <item>Hamstrings</item>
         <item>Calves</item>
         <item>Forearms</item>
     </string-array>
+
+    <string-array name="exercise_list">
+        <item>Choose a fundamental exercise</item>
+        <item>Bench Press</item>
+        <item>Squat</item>
+        <item>Deadlift</item>
+    </string-array>
+
 
 </resources>
