@@ -154,7 +154,6 @@ public class profile_Frag extends Fragment {
                     .setPositiveButton(R.string.yes, (dialog, which) -> {
                         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                         if (currentUser != null) {
-                            // Use a PasswordEditText for better password input experience
                             android.widget.EditText passwordInput = new android.widget.EditText(requireContext());
                             passwordInput.setHint(R.string.password_hint);
                             passwordInput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD);
