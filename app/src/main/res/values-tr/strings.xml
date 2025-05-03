@@ -40,6 +40,16 @@
     <string name="gender_text">Cinsiyet</string>
     <string name="choose_gender">Cinsiyet Seç</string>
     <string name="not_specified">Belirtilmemiş</string>
+    <string name="error_user_not_logged_in">Kullanıcı giriş yapmamış</string>
+    <string name="error_data_retrieval">Veri alınamadı</string>
+    <string name="error_name_empty">İsim boş olamaz</string>
+    <string name="error_gender_unselected">Lütfen bir cinsiyet seçin</string>
+    <string name="log_gender_saved">Cinsiyet başarıyla kaydedildi</string>
+    <string name="log_gender_failed">Cinsiyet kaydedilemedi</string>
+    <string name="gender_male">Erkek</string>
+    <string name="gender_female">Kadın</string>
+    <string name="gender_other">Diğer</string>
+
 
     <string-array name="gender_options">
         <item>Cinsiyet Seç</item>

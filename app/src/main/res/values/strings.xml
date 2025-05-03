@@ -39,6 +39,16 @@
     <string name="gender_text">Gender</string>
     <string name="choose_gender">Choose Gender</string>
     <string name="not_specified">Not Specified</string>
+    <string name="error_user_not_logged_in">User could not log in</string>
+    <string name="error_data_retrieval">Failed to retrieve data</string>
+    <string name="error_name_empty">Name cannot be empty</string>
+    <string name="error_gender_unselected">Please select a gender</string>
+    <string name="log_gender_saved">Gender saved successfully</string>
+    <string name="log_gender_failed">Gender could not be saved</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_other">Other</string>
+
 
     <string-array name="gender_options">
         <item>Choose Gender</item>

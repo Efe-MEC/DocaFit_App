@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.Locale;
 
 public class profile_Frag extends Fragment {
@@ -36,6 +37,15 @@ public class profile_Frag extends Fragment {
     private TextView emailTextView;
     private TextView userTextView;
     private TextView genderTextView;
+
+    private final HashMap<String, String> genderTranslations = new HashMap<String, String>() {{
+        put("Erkek", "Male");
+        put("Kadın", "Female");
+        put("Diğer", "Other");
+        put("Male", "Erkek");
+        put("Female", "Kadın");
+        put("Other", "Diğer");
+    }};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -73,18 +83,25 @@ public class profile_Frag extends Fragment {
                     .getInstance("https://docafit-app-default-rtdb.europe-west1.firebasedatabase.app")
                     .getReference("Users")
                     .child(user.getUid());
+
             databaseRef.child("gender").get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     String gender = task.getResult().getValue(String.class);
-                    Log.d("GenderCheck", "Gelen gender: " + gender);
-
-                    if (gender != null && !gender.equalsIgnoreCase(getString(R.string.choose_gender))) {
-                        genderTextView.setText(gender);
+                    if (gender != null) {
+                        String currentLang = Locale.getDefault().getLanguage();
+                        if (currentLang.equals("tr") && genderTranslations.containsKey(gender)) {
+                            genderTextView.setText(gender.equals("Male") || gender.equals("Female") || gender.equals("Other")
+                                    ? genderTranslations.get(gender) : gender);
+                        } else if (currentLang.equals("en") && genderTranslations.containsKey(gender)) {
+                            genderTextView.setText(gender.equals("Erkek") || gender.equals("Kadın") || gender.equals("Diğer")
+                                    ? genderTranslations.get(gender) : gender);
+                        } else {
+                            genderTextView.setText(gender);
+                        }
                     } else {
                         genderTextView.setText(getString(R.string.not_specified));
                     }
                 } else {
-                    Log.e("GenderCheck", "Firebase hata: ", task.getException());
                     genderTextView.setText(getString(R.string.fail));
                 }
             });

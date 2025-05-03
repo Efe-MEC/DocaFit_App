@@ -14,7 +14,6 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.docafit_app.fragments.profile_Frag;
 import android.content.Intent;
 
 import com.bumptech.glide.Glide;
@@ -51,8 +50,8 @@ public class editProfile_Act extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {
-            Log.e("Firebase", "Kullanıcı giriş yapmamış");
-            Toast.makeText(this, "Kullanıcı giriş yapmamış", Toast.LENGTH_SHORT).show();
+            Log.e("Firebase", getString(R.string.error_user_not_logged_in));
+            Toast.makeText(this, getString(R.string.error_user_not_logged_in), Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -60,9 +59,7 @@ public class editProfile_Act extends AppCompatActivity {
         databaseRef = FirebaseDatabase.getInstance("https://docafit-app-default-rtdb.europe-west1.firebasedatabase.app")
                 .getReference("Users").child(user.getUid());
 
-
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(
-                this, android.R.layout.simple_spinner_item,
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item,
                 getResources().getStringArray(R.array.gender_options)) {
 
             @Override
@@ -77,11 +74,16 @@ public class editProfile_Act extends AppCompatActivity {
                 if (position == 0) {
                     tv.setTextColor(getResources().getColor(android.R.color.darker_gray));
                 } else {
-                    tv.setTextColor(getResources().getColor(android.R.color.black));
+                    tv.setTextColor(getResources().getColor(android.R.color.darker_gray));
                 }
                 return view;
             }
         };
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        genderSpinner.setAdapter(adapter);
+
+
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderSpinner.setAdapter(adapter);
@@ -103,7 +105,7 @@ public class editProfile_Act extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError error) {
-                Toast.makeText(editProfile_Act.this, "Veri alınamadı", Toast.LENGTH_SHORT).show();
+                Toast.makeText(editProfile_Act.this, getString(R.string.error_data_retrieval), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -115,12 +117,12 @@ public class editProfile_Act extends AppCompatActivity {
         String gender = genderSpinner.getSelectedItem().toString();
 
         if (newName.isEmpty()) {
-            Toast.makeText(this, "İsim boş olamaz", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_name_empty), Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (genderSpinner.getSelectedItemPosition() == 0) {
-            Toast.makeText(this, "Lütfen bir cinsiyet seçin", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_gender_unselected), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -132,14 +134,14 @@ public class editProfile_Act extends AppCompatActivity {
             if (task.isSuccessful()) {
                 databaseRef.child("gender").setValue(gender).addOnCompleteListener(task1 -> {
                     if (task1.isSuccessful()) {
-                        Log.d("ProfileUpdate", "Gender başarıyla kaydedildi.");
+                        Log.d("ProfileUpdate", getString(R.string.log_gender_saved));
                         Toast.makeText(this, getString(R.string.profile_edit_suc), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(editProfile_Act.this, mainPage_Act.class);
                         intent.putExtra("showFragment", "profile");
                         startActivity(intent);
                         finish();
                     } else {
-                        Log.e("ProfileUpdate", "Gender kaydedilemedi: ", task1.getException());
+                        Log.e("ProfileUpdate", getString(R.string.log_gender_failed), task1.getException());
                         Toast.makeText(this, getString(R.string.fail), Toast.LENGTH_SHORT).show();
                     }
                 });
