@@ -65,7 +65,7 @@ public class home_Frag extends Fragment {
         }
 
         chartWorkout.setData(lineData);
-        chartWorkout.getDescription().setText("Workout Progress");
+        chartWorkout.getDescription().setText(getString(R.string.workout_progress));
         chartWorkout.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         chartWorkout.getXAxis().setDrawGridLines(false);
         chartWorkout.invalidate();

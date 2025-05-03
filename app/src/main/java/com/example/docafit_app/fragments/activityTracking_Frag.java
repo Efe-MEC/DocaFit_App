@@ -53,7 +53,7 @@ public class activityTracking_Frag extends Fragment {
         radioGroupGender = view.findViewById(R.id.radioGroupGender);
         radioMale = view.findViewById(R.id.radioMale);
         radioFemale = view.findViewById(R.id.radioFemale);
-        // Spinner içeriği
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 requireContext(),
                 R.array.exercise_list,
@@ -71,7 +71,7 @@ public class activityTracking_Frag extends Fragment {
     private void calculateBodyFat() {
         int selectedGenderId = radioGroupGender.getCheckedRadioButtonId();
         if (selectedGenderId == -1) {
-            Toast.makeText(requireContext(), "Please enter your gender!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), getString(R.string.error_gender), Toast.LENGTH_SHORT).show();
             return;
         }
         try {
@@ -88,18 +88,18 @@ public class activityTracking_Frag extends Fragment {
                         + 0.15456 * Math.log10(height)) - 450;
             } else {
                 if (hip == 0) {
-                    Toast.makeText(requireContext(), "Please enter hip circumference for females", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), getString(R.string.error_hip_female), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 bodyFat = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck)
                         + 0.22100 * Math.log10(height)) - 450;
             }
 
-            String result = String.format("Yağ Oranı: %.2f%%", bodyFat);
+            String result = String.format(getString(R.string.body_fat_result), bodyFat);
             textViewBodyFatResult.setText(result);
 
         } catch (NumberFormatException e) {
-            Toast.makeText(requireContext(), "Lütfen tüm ölçüleri doğru giriniz!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), getString(R.string.error_measurements), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -108,13 +108,13 @@ public class activityTracking_Frag extends Fragment {
         String repsStr = editReps.getText().toString();
         String exercise = spinnerExercise.getSelectedItem().toString();
 
-        if (exercise.equals("Choose a fundamental exercise")) {
-            Toast.makeText(requireContext(), "Please select an exercise!", Toast.LENGTH_SHORT).show();
+        if (exercise.equals(getString(R.string.choose_exercise))) {
+            Toast.makeText(requireContext(), getString(R.string.error_select_exercise), Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (!weightStr.isEmpty() && !repsStr.isEmpty()) {
-            Toast.makeText(requireContext(), "Saving workout set...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), getString(R.string.saving_workout), Toast.LENGTH_SHORT).show();
 
             float weight = Float.parseFloat(weightStr);
             int reps = Integer.parseInt(repsStr);
@@ -122,12 +122,12 @@ public class activityTracking_Frag extends Fragment {
 
             workoutViewModel.insertWorkout(workoutEntry);
 
-            Toast.makeText(requireContext(), "Workout set saved!", Toast.LENGTH_SHORT).show();
-            // EditText'leri temizle
+            Toast.makeText(requireContext(), getString(R.string.workout_saved), Toast.LENGTH_SHORT).show();
+
             editWeightUsed.setText("");
             editReps.setText("");
         } else {
-            Toast.makeText(requireContext(), "Please enter weight and reps!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), getString(R.string.error_enter_weight_reps), Toast.LENGTH_SHORT).show();
         }
     }
 }

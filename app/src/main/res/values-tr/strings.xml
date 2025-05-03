@@ -71,6 +71,16 @@
     <string name="weight_hint">Ağırlık (kg)</string>
     <string name="reps_hint">Tekrar</string>
     <string name="save_set_button">Seti Kaydet</string>
+    <string name="error_gender">Lütfen cinsiyetinizi seçiniz!</string>
+    <string name="error_hip_female">Kadınlar için kalça çevresi girilmelidir!</string>
+    <string name="error_measurements">Lütfen tüm ölçüleri doğru giriniz!</string>
+    <string name="body_fat_result">Yağ Oranı: %.2f%%</string>
+    <string name="error_select_exercise">Lütfen bir egzersiz seçiniz!</string>
+    <string name="error_enter_weight_reps">Lütfen ağırlık ve tekrar giriniz!</string>
+    <string name="saving_workout">Set kaydediliyor...</string>
+    <string name="workout_saved">Set kaydedildi!</string>
+    <string name="choose_exercise">Egzersizi seçin</string>
+    <string name="workout_progress">Egzersiz Gelişimi</string>
 
     <string-array name="gender_options">
         <item>Cinsiyet Seç</item>
@@ -90,6 +100,13 @@
         <item>Hamstring</item>
         <item>Baldırlar</item>
         <item>Ön kollar</item>
+    </string-array>
+
+    <string-array name="exercise_list">
+        <item>Egzersiz Seçin</item>
+        <item>Bench Press</item>
+        <item>Squat</item>
+        <item>Deadlift</item>
     </string-array>
 
 </resources>

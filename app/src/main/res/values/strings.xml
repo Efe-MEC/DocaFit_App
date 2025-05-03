@@ -70,8 +70,16 @@
     <string name="weight_hint">Weight (kg)</string>
     <string name="reps_hint">Reps</string>
     <string name="save_set_button">Save Set</string>
-
-
+    <string name="error_gender">Please enter your gender!</string>
+    <string name="error_hip_female">Please enter hip circumference for females</string>
+    <string name="error_measurements">Please enter all measurements correctly!</string>
+    <string name="body_fat_result">Body Fat: %.2f%%</string>
+    <string name="error_select_exercise">Please select an exercise!</string>
+    <string name="error_enter_weight_reps">Please enter weight and reps!</string>
+    <string name="saving_workout">Saving workout set...</string>
+    <string name="workout_saved">Workout set saved!</string>
+    <string name="choose_exercise">Choose a fundamental exercise</string>
+    <string name="workout_progress">Workout Progress</string>
 
     <string-array name="gender_options">
         <item>Choose Gender</item>
@@ -99,6 +107,5 @@
         <item>Squat</item>
         <item>Deadlift</item>
     </string-array>
-
 
 </resources>
