@@ -45,6 +45,12 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.DocaFit_App" />
 
+        <activity
+            android:name=".fragments.profileUtils.editProfile_Act"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.DocaFit_App" />
+
     </application>
 
 </manifest>

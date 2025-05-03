@@ -18,40 +18,41 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Locale;
 
-
-
 public class mainPage_Act extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ThemeUtils.applySavedTheme(this);
         SharedPreferences preferences = getSharedPreferences("settings", MODE_PRIVATE);
-        String language = preferences.getString("language", "en"); // varsayılan İngilizce
+        String language = preferences.getString("language", "en");
         setAppLocale(language);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_mainpage);
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        loadFragment(new home_Frag());
+
+        String showFragment = getIntent().getStringExtra("showFragment");
+        if (showFragment != null && showFragment.equals("profile")) {
+            loadFragment(new profile_Frag());
+            bottomNav.setSelectedItemId(R.id.nav_profile);
+        } else {
+            loadFragment(new home_Frag());
+        }
 
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selectedFragment = null;
-
                 int itemId = item.getItemId();
 
                 if (itemId == R.id.nav_home) {
                     selectedFragment = new home_Frag();
-                }
-                else if (itemId == R.id.nav_profile) {
+                } else if (itemId == R.id.nav_profile) {
                     selectedFragment = new profile_Frag();
-                }
-                else if (itemId == R.id.nav_suggestion) {
+                } else if (itemId == R.id.nav_suggestion) {
                     selectedFragment = new exerciseSuggestion_Frag();
-                }
-                else if (itemId == R.id.nav_tracking) {
+                } else if (itemId == R.id.nav_tracking) {
                     selectedFragment = new activityTracking_Frag();
                 }
 
