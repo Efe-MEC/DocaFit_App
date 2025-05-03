@@ -66,8 +66,12 @@ public class home_Frag extends Fragment {
 
         chartWorkout.setData(lineData);
         chartWorkout.getDescription().setText(getString(R.string.workout_progress));
+        chartWorkout.getDescription().setTextColor(Color.GRAY);
         chartWorkout.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         chartWorkout.getXAxis().setDrawGridLines(false);
+        chartWorkout.getXAxis().setTextColor(Color.GRAY);
+        chartWorkout.getAxisLeft().setTextColor(Color.GRAY);
+        chartWorkout.getAxisRight().setTextColor(Color.GRAY);
         chartWorkout.invalidate();
     }
 }
