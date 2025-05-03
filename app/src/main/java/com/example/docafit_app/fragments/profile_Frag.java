@@ -3,27 +3,49 @@ package com.example.docafit_app.fragments;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.content.res.Configuration;
+import android.util.Log;
 
+import com.example.docafit_app.fragments.profileUtils.editProfile_Act;
 import com.example.docafit_app.utils.ThemeUtils;
 
 import androidx.fragment.app.Fragment;
+
 import com.example.docafit_app.R;
 import com.example.docafit_app.logIn_Act;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.Locale;
 
 public class profile_Frag extends Fragment {
 
     private Button themeToggleButton;
     private Button languageToggleButton;
-
     private Button logoutButton;
+    private Button editProfileButton;
+
+    private TextView emailTextView;
+    private TextView userTextView;
+    private TextView genderTextView;
+
+    private final HashMap<String, String> genderTranslations = new HashMap<String, String>() {{
+        put("Erkek", "Male");
+        put("Kadın", "Female");
+        put("Diğer", "Other");
+        put("Male", "Erkek");
+        put("Female", "Kadın");
+        put("Other", "Diğer");
+    }};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +54,58 @@ public class profile_Frag extends Fragment {
         themeToggleButton = view.findViewById(R.id.themeToggleButton);
         languageToggleButton = view.findViewById(R.id.languageToggleButton);
         logoutButton = view.findViewById(R.id.logoutButton);
+        editProfileButton = view.findViewById(R.id.edit_profile_button);
+
+        emailTextView = view.findViewById(R.id.email);
+        userTextView = view.findViewById(R.id.username);
+        genderTextView = view.findViewById(R.id.gender);
+
+        themeToggleButton.setGravity(Gravity.CENTER);
+        languageToggleButton.setGravity(Gravity.CENTER);
+        logoutButton.setGravity(Gravity.CENTER);
+        editProfileButton.setGravity(Gravity.CENTER);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String email = user.getEmail();
+            if (email != null) {
+                emailTextView.setText(email);
+            }
+
+            String displayName = user.getDisplayName();
+            if (displayName != null && !displayName.isEmpty()) {
+                userTextView.setText(displayName);
+            } else {
+                userTextView.setText(getString(R.string.user_label));
+            }
+
+            DatabaseReference databaseRef = FirebaseDatabase
+                    .getInstance("https://docafit-app-default-rtdb.europe-west1.firebasedatabase.app")
+                    .getReference("Users")
+                    .child(user.getUid());
+
+            databaseRef.child("gender").get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    String gender = task.getResult().getValue(String.class);
+                    if (gender != null) {
+                        String currentLang = Locale.getDefault().getLanguage();
+                        if (currentLang.equals("tr") && genderTranslations.containsKey(gender)) {
+                            genderTextView.setText(gender.equals("Male") || gender.equals("Female") || gender.equals("Other")
+                                    ? genderTranslations.get(gender) : gender);
+                        } else if (currentLang.equals("en") && genderTranslations.containsKey(gender)) {
+                            genderTextView.setText(gender.equals("Erkek") || gender.equals("Kadın") || gender.equals("Diğer")
+                                    ? genderTranslations.get(gender) : gender);
+                        } else {
+                            genderTextView.setText(gender);
+                        }
+                    } else {
+                        genderTextView.setText(getString(R.string.not_specified));
+                    }
+                } else {
+                    genderTextView.setText(getString(R.string.fail));
+                }
+            });
+        }
 
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
@@ -58,9 +132,13 @@ public class profile_Frag extends Fragment {
 
         logoutButton.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
-
             Intent intent = new Intent(requireActivity(), logIn_Act.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Geri gitmeyi engelle
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        });
+
+        editProfileButton.setOnClickListener(v -> {
+            Intent intent = new Intent(requireActivity(), editProfile_Act.class);
             startActivity(intent);
         });
 
