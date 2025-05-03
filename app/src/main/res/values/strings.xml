@@ -80,14 +80,13 @@
     <string name="workout_saved">Workout set saved!</string>
     <string name="choose_exercise">Choose a fundamental exercise</string>
     <string name="workout_progress">Workout Progress</string>
-
+    <string name="nav_meal">Meal Advice</string>
     <string-array name="gender_options">
         <item>Choose Gender</item>
         <item>Male</item>
         <item>Female</item>
         <item>Other</item>
     </string-array>
-
     <string-array name="area_list">
         <item>Chest</item>
         <item>Back</item>
@@ -100,7 +99,6 @@
         <item>Calves</item>
         <item>Forearms</item>
     </string-array>
-
     <string-array name="exercise_list">
         <item>Choose a fundamental exercise</item>
         <item>Bench Press</item>

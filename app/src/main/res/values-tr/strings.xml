@@ -81,14 +81,13 @@
     <string name="workout_saved">Set kaydedildi!</string>
     <string name="choose_exercise">Egzersizi seçin</string>
     <string name="workout_progress">Egzersiz Gelişimi</string>
-
+    <string name="nav_meal">Öğün Tavsiyesi</string>
     <string-array name="gender_options">
         <item>Cinsiyet Seç</item>
         <item>Erkek</item>
         <item>Kadın</item>
         <item>Diğer</item>
     </string-array>
-
     <string-array name="area_list">
         <item>Göğüs</item>
         <item>Sırt</item>
@@ -101,12 +100,10 @@
         <item>Baldırlar</item>
         <item>Ön kollar</item>
     </string-array>
-
     <string-array name="exercise_list">
         <item>Egzersiz Seçin</item>
         <item>Bench Press</item>
         <item>Squat</item>
         <item>Deadlift</item>
     </string-array>
-
 </resources>

@@ -1,4 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
@@ -13,6 +14,11 @@
         android:id="@+id/nav_tracking"
         android:icon="@drawable/ic_tracking"
         android:title="@string/nav_tracking" />
+
+    <item
+        android:id="@+id/nav_meal"
+        android:icon="@drawable/ic_tracking"
+        android:title="@string/nav_meal" />
 
     <item
         android:id="@+id/nav_profile"
