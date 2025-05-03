@@ -31,6 +31,41 @@
     <string name="reset_email_failed">E-posta gönderilemedi: %1$s</string>
     <string name="area_spinner_label">Çalışmak istediğiniz bölgeyi seçin</string>
     <string name="suggestion_button_label">Egzersiz Öner</string>
+    <string name="select_image">Resim Seç</string>
+    <string name="username">İsim</string>
+    <string name="save">Kaydet</string>
+    <string name="profile_edit_suc">Profil başarıyla güncellendi</string>
+    <string name="fail">Hata oluştu</string>
+    <string name="edit_profile">Profili Düzenle</string>
+    <string name="gender_text">Cinsiyet</string>
+    <string name="choose_gender">Cinsiyet Seç</string>
+    <string name="not_specified">Belirtilmemiş</string>
+    <string name="error_user_not_logged_in">Kullanıcı giriş yapmamış</string>
+    <string name="error_data_retrieval">Veri alınamadı</string>
+    <string name="error_name_empty">İsim boş olamaz</string>
+    <string name="error_gender_unselected">Lütfen bir cinsiyet seçin</string>
+    <string name="log_gender_saved">Cinsiyet başarıyla kaydedildi</string>
+    <string name="log_gender_failed">Cinsiyet kaydedilemedi</string>
+    <string name="gender_male">Erkek</string>
+    <string name="gender_female">Kadın</string>
+    <string name="gender_other">Diğer</string>
+    <string name="delete_account">Hesabı Sil</string>
+    <string name="account_deleted">Hesabınız silindi.</string>
+    <string name="account_delete_failed">Hesap silme işlemi başarısız oldu.</string>
+    <string name="confirm_delete_account">Hesabınızı silmek istediğinizden emin misiniz?</string>
+    <string name="cancel">İptal</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <string name="confirm">Onayla</string>
+
+
+
+    <string-array name="gender_options">
+        <item>Cinsiyet Seç</item>
+        <item>Erkek</item>
+        <item>Kadın</item>
+        <item>Diğer</item>
+    </string-array>
 
     <string-array name="area_list">
         <item>Göğüs</item>

@@ -30,6 +30,41 @@
     <string name="reset_email_failed">E-mail could not send: %1$s</string>
     <string name="area_spinner_label">Select the area you want to work</string>
     <string name="suggestion_button_label">Suggest Exercise</string>
+    <string name="select_image">Select Image</string>
+    <string name="username">Name</string>
+    <string name="save">Save</string>
+    <string name="profile_edit_suc">Profile edited successfully</string>
+    <string name="fail">Failed</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="gender_text">Gender</string>
+    <string name="choose_gender">Choose Gender</string>
+    <string name="not_specified">Not Specified</string>
+    <string name="error_user_not_logged_in">User could not log in</string>
+    <string name="error_data_retrieval">Failed to retrieve data</string>
+    <string name="error_name_empty">Name cannot be empty</string>
+    <string name="error_gender_unselected">Please select a gender</string>
+    <string name="log_gender_saved">Gender saved successfully</string>
+    <string name="log_gender_failed">Gender could not be saved</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_other">Other</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="account_deleted">Your account has been deleted.</string>
+    <string name="account_delete_failed">Failed to delete account.</string>
+    <string name="confirm_delete_account">Are you sure you want to delete your account?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+
+
+
+    <string-array name="gender_options">
+        <item>Choose Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
 
     <string-array name="area_list">
         <item>Chest</item>

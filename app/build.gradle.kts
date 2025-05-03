@@ -49,6 +49,11 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
+
     implementation ("androidx.room:room-runtime:2.5.1") // Room runtime
     annotationProcessor ("androidx.room:room-compiler:2.5.1")  // Room annotation processor (Java için)
+    
+    implementation("com.github.bumptech.glide:glide:4.13.0")
+    implementation ("com.google.firebase:firebase-database:20.3.0")
+
 }

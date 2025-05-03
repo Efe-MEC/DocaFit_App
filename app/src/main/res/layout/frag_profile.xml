@@ -1,88 +1,174 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center_horizontal">
-
-    <ImageView
-        android:layout_marginTop="115dp"
-        android:id="@+id/profileImageView"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/ic_profile"
-        android:contentDescription="@string/profile_picture_desc"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/circle_background"
-        android:scaleType="centerCrop" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="45dp"
-        android:text="@string/user_label"
-        android:textStyle="bold"
-        android:textSize="18sp" />
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:gravity="center_vertical">
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_marginTop="100dp"
+            android:id="@+id/profileImageView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_default_profile"
+            android:contentDescription="@string/profile_picture_desc"
+            android:layout_marginBottom="20dp"
+            android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/currentThemeTextView"
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/theme_label"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_weight="1" />
+            android:layout_marginBottom="8dp"
+            android:gravity="end"
+            android:text="@string/user_label"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <Button
-            android:id="@+id/themeToggleButton"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="@string/change_button"
-            android:textColor="@color/button_text" />
-    </LinearLayout>
+            android:id="@+id/edit_profile_button"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:text="@string/edit_profile"
+            android:textColor="@color/gray"
+            android:background="@android:color/transparent"
+            android:layout_marginBottom="5dp"/>
 
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:gravity="center_vertical">
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
 
-        <TextView
-            android:id="@+id/currentlanguageTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/language_label"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_weight="1" />
+            <TextView
+                android:id="@+id/emailText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/email_hint"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="email_sample"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/genderText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/gender_text"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/gender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text=""
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/currentThemeTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/theme_label"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/themeToggleButton"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/change_button"
+                android:textColor="@color/button_text"
+                android:layout_gravity="end" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/currentlanguageTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/language_label"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/languageToggleButton"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/change_button"
+                android:textColor="@color/button_text"
+                android:layout_gravity="end" />
+        </LinearLayout>
 
         <Button
-            android:id="@+id/languageToggleButton"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="@string/change_button"
-            android:textColor="@color/button_text" />
+            android:id="@+id/logoutButton"
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:text="@string/logout"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/button_text"/>
+
+        <Button
+            android:id="@+id/deleteAccountButton"
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:text="@string/delete_account"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/button_text"/>
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:text="@string/logout"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/button_text"/>
-
-</LinearLayout>
+</ScrollView>
