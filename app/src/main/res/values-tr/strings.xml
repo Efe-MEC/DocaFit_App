@@ -49,6 +49,15 @@
     <string name="gender_male">Erkek</string>
     <string name="gender_female">Kadın</string>
     <string name="gender_other">Diğer</string>
+    <string name="delete_account">Hesabı Sil</string>
+    <string name="account_deleted">Hesabınız silindi.</string>
+    <string name="account_delete_failed">Hesap silme işlemi başarısız oldu.</string>
+    <string name="confirm_delete_account">Hesabınızı silmek istediğinizden emin misiniz?</string>
+    <string name="cancel">İptal</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <string name="confirm">Onayla</string>
+
 
 
     <string-array name="gender_options">

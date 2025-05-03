@@ -11,16 +11,18 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.content.res.Configuration;
 import android.util.Log;
-
-import com.example.docafit_app.fragments.profileUtils.editProfile_Act;
-import com.example.docafit_app.utils.ThemeUtils;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.docafit_app.R;
 import com.example.docafit_app.logIn_Act;
+import com.example.docafit_app.fragments.profileUtils.editProfile_Act;
+import com.example.docafit_app.utils.ThemeUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -33,6 +35,7 @@ public class profile_Frag extends Fragment {
     private Button languageToggleButton;
     private Button logoutButton;
     private Button editProfileButton;
+    private Button deleteAccountButton;
 
     private TextView emailTextView;
     private TextView userTextView;
@@ -55,6 +58,7 @@ public class profile_Frag extends Fragment {
         languageToggleButton = view.findViewById(R.id.languageToggleButton);
         logoutButton = view.findViewById(R.id.logoutButton);
         editProfileButton = view.findViewById(R.id.edit_profile_button);
+        deleteAccountButton = view.findViewById(R.id.deleteAccountButton);
 
         emailTextView = view.findViewById(R.id.email);
         userTextView = view.findViewById(R.id.username);
@@ -64,6 +68,7 @@ public class profile_Frag extends Fragment {
         languageToggleButton.setGravity(Gravity.CENTER);
         logoutButton.setGravity(Gravity.CENTER);
         editProfileButton.setGravity(Gravity.CENTER);
+        deleteAccountButton.setGravity(Gravity.CENTER);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -141,6 +146,70 @@ public class profile_Frag extends Fragment {
             Intent intent = new Intent(requireActivity(), editProfile_Act.class);
             startActivity(intent);
         });
+
+        deleteAccountButton.setOnClickListener(v -> {
+            new android.app.AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.delete_account)
+                    .setMessage(R.string.confirm_delete_account)
+                    .setPositiveButton(R.string.yes, (dialog, which) -> {
+                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        if (currentUser != null) {
+                            // Use a PasswordEditText for better password input experience
+                            android.widget.EditText passwordInput = new android.widget.EditText(requireContext());
+                            passwordInput.setHint(R.string.password_hint);
+                            passwordInput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+                            new android.app.AlertDialog.Builder(requireContext())
+                                    .setTitle(R.string.password_hint)
+                                    .setView(passwordInput)
+                                    .setPositiveButton(R.string.confirm, (dialog1, which1) -> {
+                                        String password = passwordInput.getText().toString();
+                                        if (!password.isEmpty()) {
+                                            AuthCredential credential = EmailAuthProvider.getCredential(currentUser.getEmail(), password);
+
+                                            currentUser.reauthenticate(credential).addOnCompleteListener(task -> {
+                                                if (task.isSuccessful()) {
+                                                    DatabaseReference userRef = FirebaseDatabase
+                                                            .getInstance("https://docafit-app-default-rtdb.europe-west1.firebasedatabase.app")
+                                                            .getReference("Users")
+                                                            .child(currentUser.getUid());
+
+                                                    userRef.removeValue().addOnCompleteListener(removeTask -> {
+                                                        if (removeTask.isSuccessful()) {
+                                                            currentUser.delete().addOnCompleteListener(deleteTask -> {
+                                                                if (deleteTask.isSuccessful()) {
+                                                                    FirebaseAuth.getInstance().signOut();
+                                                                    Intent intent = new Intent(requireActivity(), logIn_Act.class);
+                                                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                                    startActivity(intent);
+                                                                } else {
+                                                                    Log.e("DeleteAccount", "Error: " + deleteTask.getException());
+                                                                    android.widget.Toast.makeText(requireContext(), R.string.account_delete_failed, android.widget.Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            });
+                                                        } else {
+                                                            Log.e("DeleteAccount", "Database error: " + removeTask.getException());
+                                                            android.widget.Toast.makeText(requireContext(), R.string.account_delete_failed, android.widget.Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                                } else {
+                                                    Log.e("Reauthentication", "Error: " + task.getException());
+                                                    android.widget.Toast.makeText(requireContext(), R.string.fail, android.widget.Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                        } else {
+                                            android.widget.Toast.makeText(requireContext(), R.string.password_hint, android.widget.Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                    .setNegativeButton(R.string.cancel, null)
+                                    .show();
+                        }
+                    })
+                    .setNegativeButton(R.string.no, null)
+                    .show();
+        });
+
+
 
         return view;
     }

@@ -48,6 +48,15 @@
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
     <string name="gender_other">Other</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="account_deleted">Your account has been deleted.</string>
+    <string name="account_delete_failed">Failed to delete account.</string>
+    <string name="confirm_delete_account">Are you sure you want to delete your account?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+
 
 
     <string-array name="gender_options">
