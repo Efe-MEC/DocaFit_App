@@ -48,7 +48,7 @@ public class profile_Frag extends Fragment {
 
         emailTextView = view.findViewById(R.id.email);
         userTextView = view.findViewById(R.id.username);
-        genderTextView = view.findViewById(R.id.gender); // Bu satır önemli
+        genderTextView = view.findViewById(R.id.gender);
 
         themeToggleButton.setGravity(Gravity.CENTER);
         languageToggleButton.setGravity(Gravity.CENTER);
@@ -69,7 +69,10 @@ public class profile_Frag extends Fragment {
                 userTextView.setText(getString(R.string.user_label));
             }
 
-            DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+            DatabaseReference databaseRef = FirebaseDatabase
+                    .getInstance("https://docafit-app-default-rtdb.europe-west1.firebasedatabase.app")
+                    .getReference("Users")
+                    .child(user.getUid());
             databaseRef.child("gender").get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     String gender = task.getResult().getValue(String.class);

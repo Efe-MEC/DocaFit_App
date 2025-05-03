@@ -10,11 +10,16 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.docafit_app.fragments.profile_Frag;
+import android.content.Intent;
+
 import com.bumptech.glide.Glide;
 import com.example.docafit_app.R;
+import com.example.docafit_app.mainPage_Act;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -45,14 +50,16 @@ public class editProfile_Act extends AppCompatActivity {
         saveButton = findViewById(R.id.saveButton);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
-
         if (user == null) {
-            Toast.makeText(this, "Kullanıcı bulunamadı", Toast.LENGTH_SHORT).show();
+            Log.e("Firebase", "Kullanıcı giriş yapmamış");
+            Toast.makeText(this, "Kullanıcı giriş yapmamış", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
 
-        databaseRef = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+        databaseRef = FirebaseDatabase.getInstance("https://docafit-app-default-rtdb.europe-west1.firebasedatabase.app")
+                .getReference("Users").child(user.getUid());
+
 
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(
                 this, android.R.layout.simple_spinner_item,
@@ -123,9 +130,19 @@ public class editProfile_Act extends AppCompatActivity {
 
         user.updateProfile(profileUpdates).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                databaseRef.child("gender").setValue(gender);
-                Toast.makeText(this, getString(R.string.profile_edit_suc), Toast.LENGTH_SHORT).show();
-                finish();
+                databaseRef.child("gender").setValue(gender).addOnCompleteListener(task1 -> {
+                    if (task1.isSuccessful()) {
+                        Log.d("ProfileUpdate", "Gender başarıyla kaydedildi.");
+                        Toast.makeText(this, getString(R.string.profile_edit_suc), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(editProfile_Act.this, mainPage_Act.class);
+                        intent.putExtra("showFragment", "profile");
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Log.e("ProfileUpdate", "Gender kaydedilemedi: ", task1.getException());
+                        Toast.makeText(this, getString(R.string.fail), Toast.LENGTH_SHORT).show();
+                    }
+                });
             } else {
                 Toast.makeText(this, getString(R.string.fail), Toast.LENGTH_SHORT).show();
             }
