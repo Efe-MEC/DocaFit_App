@@ -81,7 +81,6 @@
     <string name="workout_saved">Set kaydedildi!</string>
     <string name="choose_exercise">Egzersizi seçin</string>
     <string name="workout_progress">Egzersiz Gelişimi</string>
-    <string name="nav_meal">Öğün Tavsiyesi</string>
     <string-array name="gender_options">
         <item>Cinsiyet Seç</item>
         <item>Erkek</item>

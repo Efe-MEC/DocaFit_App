@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.docafit_app.fragments.activityTracking_Frag;
 import com.example.docafit_app.fragments.home_Frag;
 import com.example.docafit_app.fragments.exerciseSuggestion_Frag;
+import com.example.docafit_app.fragments.mealadvice_Frag;
 import com.example.docafit_app.fragments.profile_Frag;
 import com.example.docafit_app.utils.ThemeUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -54,7 +55,10 @@ public class mainPage_Act extends AppCompatActivity {
                     selectedFragment = new exerciseSuggestion_Frag();
                 } else if (itemId == R.id.nav_tracking) {
                     selectedFragment = new activityTracking_Frag();
-                }
+                } else if (itemId == R.id.nav_meal) {
+                    selectedFragment = new mealadvice_Frag();
+            }
+
 
                 return loadFragment(selectedFragment);
             }

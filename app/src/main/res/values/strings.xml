@@ -80,7 +80,6 @@
     <string name="workout_saved">Workout set saved!</string>
     <string name="choose_exercise">Choose a fundamental exercise</string>
     <string name="workout_progress">Workout Progress</string>
-    <string name="nav_meal">Meal Advice</string>
     <string-array name="gender_options">
         <item>Choose Gender</item>
         <item>Male</item>
@@ -105,5 +104,4 @@
         <item>Squat</item>
         <item>Deadlift</item>
     </string-array>
-
 </resources>
