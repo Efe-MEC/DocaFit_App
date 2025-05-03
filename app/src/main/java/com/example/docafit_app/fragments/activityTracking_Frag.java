@@ -69,6 +69,11 @@ public class activityTracking_Frag extends Fragment {
         return view;
     }
     private void calculateBodyFat() {
+        int selectedGenderId = radioGroupGender.getCheckedRadioButtonId();
+        if (selectedGenderId == -1) {
+            Toast.makeText(requireContext(), "Please enter your gender!", Toast.LENGTH_SHORT).show();
+            return;
+        }
         try {
             float height = Float.parseFloat(editHeight.getText().toString());
             float neck = Float.parseFloat(editNeck.getText().toString());
