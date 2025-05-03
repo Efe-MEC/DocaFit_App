@@ -30,7 +30,6 @@ public class exerciseSuggestion_Frag extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Spinner setup
         Spinner spinner = view.findViewById(R.id.spinnerBolge);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 requireContext(),
@@ -44,18 +43,29 @@ public class exerciseSuggestion_Frag extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View itemView, int position, long id) {
                 String selectedRegion = parent.getItemAtPosition(position).toString();
-                selectExerciseForRegion(selectedRegion, view);
+                String[] englishRegionKeys = {"Abs", "Chest", "Glutes", "Shoulder", "Back", "Calves", "HamStrings", "Biceps", "Triceps", "Forearms"};
+                String[] localizedRegionNames = getResources().getStringArray(R.array.area_list);
+                int index = Arrays.asList(localizedRegionNames).indexOf(selectedRegion);
+                if (index != -1) {
+                    String englishRegionKey = englishRegionKeys[index];
+                    selectExerciseForRegion(englishRegionKey, view);
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-        // Button click
         Button button = view.findViewById(R.id.buttonOner);
         button.setOnClickListener(v -> {
             String selectedRegion = spinner.getSelectedItem().toString();
-            selectExerciseForRegion(selectedRegion, view);
+            String[] englishRegionKeys = {"Abs", "Chest", "Glutes", "Shoulder", "Back", "Calves", "HamStrings", "Biceps", "Triceps", "Forearms"};
+            String[] localizedRegionNames = getResources().getStringArray(R.array.area_list);
+            int index = Arrays.asList(localizedRegionNames).indexOf(selectedRegion);
+            if (index != -1) {
+                String englishRegionKey = englishRegionKeys[index];
+                selectExerciseForRegion(englishRegionKey, view);
+            }
         });
     }
 

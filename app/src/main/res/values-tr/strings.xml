@@ -29,8 +29,6 @@
     <string name="forgot_password">Şifremi unuttum</string>
     <string name="reset_email_sent">Şifre sıfırlama e-postası gönderildi: %1$s</string>
     <string name="reset_email_failed">E-posta gönderilemedi: %1$s</string>
-    <string name="area_spinner_label">Çalışmak istediğiniz bölgeyi seçin</string>
-    <string name="suggestion_button_label">Egzersiz Öner</string>
     <string name="select_image">Resim Seç</string>
     <string name="username">İsim</string>
     <string name="save">Kaydet</string>
@@ -57,8 +55,32 @@
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
     <string name="confirm">Onayla</string>
-
-
+    <string name="area_spinner_label">Bölge Seçin</string>
+    <string name="suggestion_button_label">Egzersiz Öner</string>
+    <string name="suggested_exercise">Önerilen Egzersiz</string>
+    <string name="fat_ratio_calculation_title">Yağ Oranı Hesaplama</string>
+    <string name="male">Erkek</string>
+    <string name="female">Kadın</string>
+    <string name="height_hint">Boy (cm)</string>
+    <string name="neck_hint">Boyun (cm)</string>
+    <string name="waist_hint">Bel (cm)</string>
+    <string name="hip_hint">Kalça (cm)</string>
+    <string name="calculate_body_fat_button">Yağ Oranın Hesapla</string>
+    <string name="fat_rate_result">Yağ Oranı: --</string>
+    <string name="lift_tracking_title">Egzersiz Takibi</string>
+    <string name="weight_hint">Ağırlık (kg)</string>
+    <string name="reps_hint">Tekrar</string>
+    <string name="save_set_button">Seti Kaydet</string>
+    <string name="error_gender">Lütfen cinsiyetinizi seçiniz!</string>
+    <string name="error_hip_female">Kadınlar için kalça çevresi girilmelidir!</string>
+    <string name="error_measurements">Lütfen tüm ölçüleri doğru giriniz!</string>
+    <string name="body_fat_result">Yağ Oranı: %.2f%%</string>
+    <string name="error_select_exercise">Lütfen bir egzersiz seçiniz!</string>
+    <string name="error_enter_weight_reps">Lütfen ağırlık ve tekrar giriniz!</string>
+    <string name="saving_workout">Set kaydediliyor...</string>
+    <string name="workout_saved">Set kaydedildi!</string>
+    <string name="choose_exercise">Egzersizi seçin</string>
+    <string name="workout_progress">Egzersiz Gelişimi</string>
 
     <string-array name="gender_options">
         <item>Cinsiyet Seç</item>
@@ -78,6 +100,13 @@
         <item>Hamstring</item>
         <item>Baldırlar</item>
         <item>Ön kollar</item>
+    </string-array>
+
+    <string-array name="exercise_list">
+        <item>Egzersiz Seçin</item>
+        <item>Bench Press</item>
+        <item>Squat</item>
+        <item>Deadlift</item>
     </string-array>
 
 </resources>
