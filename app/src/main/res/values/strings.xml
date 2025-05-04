@@ -87,7 +87,8 @@
     <string name="timer_text">Timer</string>
     <string name="start_text">Start</string>
     <string name="finish_text">Finish</string>
-    <string name="remain_time_text">Remaining Time: 05:00</string>
+    <string name="remain_time_text">Remaining Time: %02d:%02d</string>
+    <string name="time_up">Süre Doldu</string>
 
     <string-array name="meal_list">
         <item>Grilled chicken with quinoa, Steamed broccoli</item>

@@ -50,7 +50,7 @@ public class timer_Act extends AppCompatActivity {
 
             public void onFinish() {
                 isRunning = false;
-                countdownText.setText("Süre doldu!");
+                countdownText.setText(getString(R.string.time_up));
             }
         }.start();
 
@@ -61,7 +61,7 @@ public class timer_Act extends AppCompatActivity {
         int minutes = (int) (timeLeftInMillis / 1000) / 60;
         int seconds = (int) (timeLeftInMillis / 1000) % 60;
 
-        String timeFormatted = String.format("Kalan süre: %02d:%02d", minutes, seconds);
+        String timeFormatted = String.format(getString(R.string.remain_time_text), minutes, seconds);
         countdownText.setText(timeFormatted);
     }
 }
