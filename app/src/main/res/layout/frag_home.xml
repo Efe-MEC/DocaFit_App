@@ -12,5 +12,8 @@
         android:id="@+id/chart_workout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="110dp"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/gray"
         android:background="@android:color/transparent" />
 </LinearLayout>

@@ -4,11 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/layoutTracking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:padding="16dp"
+        android:gravity="center_horizontal"
         android:fitsSystemWindows="true">
 
         <TextView
@@ -18,19 +20,14 @@
             android:text="@string/fat_ratio_calculation_title"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:layout_marginTop="110dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginTop="100dp" />
 
         <RadioGroup
             android:id="@+id/radioGroupGender"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@id/tvBodyMeasurements"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:layout_marginTop="22dp">
 
             <RadioButton
                 android:id="@+id/radioMale"
@@ -47,124 +44,100 @@
 
         <EditText
             android:id="@+id/editHeight"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="@string/height_hint"
             android:inputType="numberDecimal"
             android:minHeight="48dp"
-            app:layout_constraintTop_toBottomOf="@id/radioGroupGender"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="0dp"
+            />
 
         <EditText
             android:id="@+id/editNeck"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="@string/neck_hint"
             android:inputType="numberDecimal"
             android:minHeight="48dp"
-            app:layout_constraintTop_toBottomOf="@id/editHeight"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="8dp" />
 
         <EditText
             android:id="@+id/editWaist"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="@string/waist_hint"
             android:inputType="numberDecimal"
             android:minHeight="48dp"
-            app:layout_constraintTop_toBottomOf="@id/editNeck"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="8dp" />
 
         <EditText
             android:id="@+id/editHip"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="@string/hip_hint"
             android:inputType="numberDecimal"
             android:minHeight="48dp"
-            app:layout_constraintTop_toBottomOf="@id/editWaist"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="8dp" />
 
         <Button
             android:id="@+id/buttonCalculateBodyFat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
             android:text="@string/calculate_body_fat_button"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/editHip"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textColor="@color/button_text" />
+            android:textColor="@color/button_text"
+            android:layout_marginTop="18dp" />
 
         <TextView
             android:id="@+id/textViewBodyFatResult"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="@string/fat_rate_result"
             android:textSize="16sp"
             android:textStyle="bold"
             android:gravity="center"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/buttonCalculateBodyFat"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="15dp" />
 
         <TextView
             android:id="@+id/tvWorkoutTracking"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="@string/lift_tracking_title"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/textViewBodyFatResult"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:gravity="center"
+            android:layout_marginTop="32dp" />
 
         <Spinner
             android:id="@+id/spinnerExercise"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
-            app:layout_constraintTop_toBottomOf="@id/tvWorkoutTracking"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="12dp" />
 
         <EditText
             android:id="@+id/editWeightUsed"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="@string/weight_hint"
             android:inputType="numberDecimal"
             android:minHeight="48dp"
-            app:layout_constraintTop_toBottomOf="@id/spinnerExercise"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="8dp" />
 
         <EditText
             android:id="@+id/editReps"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="@string/reps_hint"
             android:inputType="number"
             android:minHeight="48dp"
-            app:layout_constraintTop_toBottomOf="@id/editWeightUsed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="8dp" />
 
         <Button
             android:id="@+id/buttonSaveSet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
             android:text="@string/save_set_button"
-            android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/editReps"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textColor="@color/button_text" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textColor="@color/button_text"
+            android:layout_marginTop="18dp" />
+    </LinearLayout>
 </ScrollView>
