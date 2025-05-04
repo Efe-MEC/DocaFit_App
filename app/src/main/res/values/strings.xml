@@ -84,6 +84,10 @@
     <string name="suggest_meal">Suggest a Meal</string>
     <string name="meal_suggestion_placeholder">Your meal suggestion will appear here</string>
     <string name="suggested_meal_label">Suggested Meal</string>
+    <string name="timer_text">Timer</string>
+    <string name="start_text">Start</string>
+    <string name="finish_text">Finish</string>
+    <string name="remain_time_text">Remaining Time: 05:00</string>
 
     <string-array name="meal_list">
         <item>Grilled chicken with quinoa, Steamed broccoli</item>

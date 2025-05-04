@@ -1,5 +1,6 @@
 package com.example.docafit_app.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -8,18 +9,24 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
+import com.example.docafit_app.R;
+import com.example.docafit_app.fragments.profileUtils.editProfile_Act;
+import com.example.docafit_app.timer_Act;
+
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import androidx.fragment.app.Fragment;
-import com.example.docafit_app.R;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
 
 public class exerciseSuggestion_Frag extends Fragment {
     Map<String, List<String>> exercises = new HashMap<>();
+    private Button timerButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,6 +38,9 @@ public class exerciseSuggestion_Frag extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Spinner spinner = view.findViewById(R.id.spinnerBolge);
+        Button button = view.findViewById(R.id.buttonOner);
+        timerButton = view.findViewById(R.id.timer);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 requireContext(),
                 R.array.area_list,
@@ -56,7 +66,6 @@ public class exerciseSuggestion_Frag extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-        Button button = view.findViewById(R.id.buttonOner);
         button.setOnClickListener(v -> {
             String selectedRegion = spinner.getSelectedItem().toString();
             String[] englishRegionKeys = {"Abs", "Chest", "Glutes", "Shoulder", "Back", "Calves", "HamStrings", "Biceps", "Triceps", "Forearms"};
@@ -66,6 +75,11 @@ public class exerciseSuggestion_Frag extends Fragment {
                 String englishRegionKey = englishRegionKeys[index];
                 selectExerciseForRegion(englishRegionKey, view);
             }
+        });
+
+        timerButton.setOnClickListener(v -> {
+            Intent intent = new Intent(requireActivity(), timer_Act.class);
+            startActivity(intent);
         });
     }
 
