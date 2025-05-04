@@ -17,8 +17,8 @@
 
     <item
         android:id="@+id/nav_meal"
-        android:icon="@drawable/ic_tracking"
-        android:title="Meal" />
+        android:icon="@drawable/ic_meal"
+        android:title="@string/meal_suggestion" />
 
     <item
         android:id="@+id/nav_profile"

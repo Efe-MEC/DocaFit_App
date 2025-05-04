@@ -80,6 +80,23 @@
     <string name="workout_saved">Workout set saved!</string>
     <string name="choose_exercise">Choose a fundamental exercise</string>
     <string name="workout_progress">Workout Progress</string>
+    <string name="meal_suggestion">Meal Suggestion</string>
+    <string name="suggest_meal">Suggest a Meal</string>
+    <string name="meal_suggestion_placeholder">Your meal suggestion will appear here</string>
+    <string name="suggested_meal_label">Suggested Meal</string>
+
+    <string-array name="meal_list">
+        <item>Grilled chicken with quinoa, Steamed broccoli</item>
+        <item>Oatmeal with whey protein, Banana, Peanut butter</item>
+        <item>Salmon with sweet potato asparagus</item>
+        <item>Whole wheat pasta with turkey meatballs, Tomato sauce</item>
+        <item>Tuna salad with avocado mixed greens</item>
+        <item>Egg white omelette with spinach whole grain toast</item>
+        <item>Greek yogurt with berries granola</item>
+        <item>Beef stir-fry with brown rice vegetables</item>
+        <item>Cottage cheese with almonds sliced apple</item>
+        <item>Protein smoothie with banana, Almond milk, Spinach</item>
+    </string-array>
     <string-array name="gender_options">
         <item>Choose Gender</item>
         <item>Male</item>

@@ -81,6 +81,23 @@
     <string name="workout_saved">Set kaydedildi!</string>
     <string name="choose_exercise">Egzersizi seçin</string>
     <string name="workout_progress">Egzersiz Gelişimi</string>
+    <string name="meal_suggestion">Yemek Önerisi</string>
+    <string name="suggest_meal">Yemek Öner</string>
+    <string name="meal_suggestion_placeholder">Yemek öneriniz burada görünecek</string>
+    <string name="suggested_meal_label">Önerilen Yemek</string>
+
+    <string-array name="meal_list">
+        <item>Izgara tavuk, Kinoa, Buharda brokoli</item>
+        <item>Yulaf ezmesi, Whey proteini, Muz, Fıstık ezmesi</item>
+        <item>Somon, Tatlı patates, Kuşkonmaz</item>
+        <item>Tam buğdaylı makarna, Hindi köfte, Domates sosu</item>
+        <item>Ton balıklı salata, Avokado, Yeşillikler</item>
+        <item>Yumurta beyazılı omlet, Ispanak, Tam tahıllı ekmek</item>
+        <item>Süzme yoğurt, Meyve, Granola</item>
+        <item>Et sote, Esmer pirinç, Sebzeler</item>
+        <item>Lor peyniri, Badem, Dilimlenmiş elma</item>
+        <item>Proteinli smoothie (muz badem sütü ıspanak)</item>
+    </string-array>
     <string-array name="gender_options">
         <item>Cinsiyet Seç</item>
         <item>Erkek</item>
