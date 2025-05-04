@@ -1,6 +1,9 @@
 package com.example.docafit_app.fragments.profileUtils;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -10,14 +13,14 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-
 import com.bumptech.glide.Glide;
 import com.example.docafit_app.R;
+import com.example.docafit_app.database.ProfileDatabase;
+import com.example.docafit_app.database.ProfilePicture;
+import com.example.docafit_app.database.ProfilePictureDao;
 import com.example.docafit_app.mainPage_Act;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,15 +31,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 public class editProfile_Act extends AppCompatActivity {
 
     private EditText nameEditText;
     private ImageView profileImageView;
     private Spinner genderSpinner;
     private Button saveButton;
+    private Button selectImageButton;
 
     private FirebaseUser user;
     private DatabaseReference databaseRef;
+
+    private static final int IMAGE_PICKER_REQUEST_CODE = 1001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +56,7 @@ public class editProfile_Act extends AppCompatActivity {
         profileImageView = findViewById(R.id.profileImageView);
         genderSpinner = findViewById(R.id.genderSpinner);
         saveButton = findViewById(R.id.saveButton);
+        selectImageButton = findViewById(R.id.selectImageButton);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {
@@ -59,7 +69,9 @@ public class editProfile_Act extends AppCompatActivity {
         databaseRef = FirebaseDatabase.getInstance("https://docafit-app-default-rtdb.europe-west1.firebasedatabase.app")
                 .getReference("Users").child(user.getUid());
 
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item,
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(
+                this,
+                android.R.layout.simple_spinner_item,
                 getResources().getStringArray(R.array.gender_options)) {
 
             @Override
@@ -71,11 +83,7 @@ public class editProfile_Act extends AppCompatActivity {
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView tv = (TextView) view;
-                if (position == 0) {
-                    tv.setTextColor(getResources().getColor(android.R.color.darker_gray));
-                } else {
-                    tv.setTextColor(getResources().getColor(android.R.color.darker_gray));
-                }
+                tv.setTextColor(getResources().getColor(position == 0 ? android.R.color.darker_gray : android.R.color.darker_gray));
                 return view;
             }
         };
@@ -83,15 +91,9 @@ public class editProfile_Act extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderSpinner.setAdapter(adapter);
 
-
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        genderSpinner.setAdapter(adapter);
-
         nameEditText.setText(user.getDisplayName());
-        if (user.getPhotoUrl() != null) {
-            Glide.with(this).load(user.getPhotoUrl()).into(profileImageView);
-        }
+
+        loadProfileImageFromRoom();
 
         databaseRef.child("gender").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -110,6 +112,22 @@ public class editProfile_Act extends AppCompatActivity {
         });
 
         saveButton.setOnClickListener(v -> saveProfileChanges());
+        selectImageButton.setOnClickListener(v -> openImagePicker());
+    }
+
+    private void loadProfileImageFromRoom() {
+        Executor executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            ProfileDatabase db = ProfileDatabase.getInstance(editProfile_Act.this);
+            ProfilePictureDao dao = db.profilePictureDao();
+            ProfilePicture picture = dao.getProfilePicture();
+
+            runOnUiThread(() -> {
+                if (picture != null && picture.getImageUrl() != null) {
+                    Glide.with(editProfile_Act.this).load(picture.getImageUrl()).into(profileImageView);
+                }
+            });
+        });
     }
 
     private void saveProfileChanges() {
@@ -134,14 +152,12 @@ public class editProfile_Act extends AppCompatActivity {
             if (task.isSuccessful()) {
                 databaseRef.child("gender").setValue(gender).addOnCompleteListener(task1 -> {
                     if (task1.isSuccessful()) {
-                        Log.d("ProfileUpdate", getString(R.string.log_gender_saved));
                         Toast.makeText(this, getString(R.string.profile_edit_suc), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(editProfile_Act.this, mainPage_Act.class);
+                        Intent intent = new Intent(this, mainPage_Act.class);
                         intent.putExtra("showFragment", "profile");
                         startActivity(intent);
                         finish();
                     } else {
-                        Log.e("ProfileUpdate", getString(R.string.log_gender_failed), task1.getException());
                         Toast.makeText(this, getString(R.string.fail), Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -149,5 +165,34 @@ public class editProfile_Act extends AppCompatActivity {
                 Toast.makeText(this, getString(R.string.fail), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void saveProfileImageToRoom(String imageUrl) {
+        ProfilePicture picture = new ProfilePicture();
+        picture.setImageUrl(imageUrl);
+
+        Executor executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            ProfileDatabase db = ProfileDatabase.getInstance(this);
+            db.profilePictureDao().insertProfilePicture(picture);
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == IMAGE_PICKER_REQUEST_CODE && data != null) {
+            Uri selectedImageUri = data.getData();
+            if (selectedImageUri != null) {
+                Glide.with(this).load(selectedImageUri).into(profileImageView);
+                saveProfileImageToRoom(selectedImageUri.toString());
+            }
+        }
+    }
+
+    public void openImagePicker() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, IMAGE_PICKER_REQUEST_CODE);
     }
 }

@@ -31,5 +31,8 @@ public interface WorkoutDao {
     @Query("SELECT * FROM workout_entries WHERE exerciseName = :exercise ORDER BY date DESC")
     List<WorkoutEntry> getWorkoutsByExercise(String exercise);
 
+    @Query("DELETE FROM workout_entries")
+    void deleteAll();
+
 }
 
