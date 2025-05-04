@@ -11,10 +11,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.content.res.Configuration;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.docafit_app.R;
 import com.example.docafit_app.logIn_Act;
 import com.example.docafit_app.fragments.profileUtils.editProfile_Act;
@@ -25,9 +27,14 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.example.docafit_app.database.ProfileDatabase;
+import com.example.docafit_app.database.ProfilePictureDao;
+import com.example.docafit_app.database.ProfilePicture;
 
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class profile_Frag extends Fragment {
 
@@ -69,6 +76,9 @@ public class profile_Frag extends Fragment {
         logoutButton.setGravity(Gravity.CENTER);
         editProfileButton.setGravity(Gravity.CENTER);
         deleteAccountButton.setGravity(Gravity.CENTER);
+
+        ImageView profileImageView = view.findViewById(R.id.profileImageView);
+        loadProfileImageFromRoom(profileImageView);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -121,8 +131,12 @@ public class profile_Frag extends Fragment {
 
         themeToggleButton.setOnClickListener(v -> {
             ThemeUtils.toggleTheme(requireContext());
-            requireActivity().recreate();
+            Intent intent = new Intent(requireActivity(), requireActivity().getClass());
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            requireActivity().finish();
         });
+
 
         languageToggleButton.setOnClickListener(v -> {
             String currentLanguage = Locale.getDefault().getLanguage();
@@ -237,5 +251,20 @@ public class profile_Frag extends Fragment {
         } else if (currentLanguage.equals("tr")) {
             languageToggleButton.setText(getString(R.string.language_turkish));
         }
+    }
+
+    private void loadProfileImageFromRoom(ImageView profileImageView) {
+        Executor executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            ProfileDatabase db = ProfileDatabase.getInstance(requireContext());
+            ProfilePictureDao dao = db.profilePictureDao();
+            ProfilePicture picture = dao.getProfilePicture();
+
+            requireActivity().runOnUiThread(() -> {
+                if (picture != null && picture.getImageUrl() != null) {
+                    Glide.with(requireContext()).load(picture.getImageUrl()).into(profileImageView);
+                }
+            });
+        });
     }
 }
