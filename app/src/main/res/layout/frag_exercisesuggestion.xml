@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:padding="16dp">
 
     <LinearLayout
         android:id="@+id/linearLayoutCenter"
@@ -16,19 +16,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/body_mass"
+            android:layout_gravity="center_horizontal"/>
+
         <TextView
             android:id="@+id/textViewBolgeSecimi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/area_spinner_label"
             android:textSize="18sp"
-            android:layout_marginBottom="30dp"/>
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="22dp"/>
 
         <Spinner
             android:id="@+id/spinnerBolge"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="22dp"
             android:minHeight="48dp"
             android:spinnerMode="dropdown" />
 
@@ -38,7 +49,7 @@
             android:layout_height="wrap_content"
             android:text="@string/suggestion_button_label"
             android:textColor="@color/button_text"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginBottom="30dp"/>
 
         <TextView
             android:id="@+id/textViewEgzersiz"
