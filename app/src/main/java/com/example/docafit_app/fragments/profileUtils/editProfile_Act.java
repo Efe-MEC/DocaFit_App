@@ -83,7 +83,7 @@ public class editProfile_Act extends AppCompatActivity {
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView tv = (TextView) view;
-                tv.setTextColor(getResources().getColor(position == 0 ? android.R.color.darker_gray : android.R.color.black));
+                tv.setTextColor(getResources().getColor(position == 0 ? android.R.color.darker_gray : android.R.color.darker_gray));
                 return view;
             }
         };
