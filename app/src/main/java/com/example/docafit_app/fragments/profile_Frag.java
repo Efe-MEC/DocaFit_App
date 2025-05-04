@@ -30,6 +30,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.example.docafit_app.database.ProfileDatabase;
 import com.example.docafit_app.database.ProfilePictureDao;
 import com.example.docafit_app.database.ProfilePicture;
+import com.example.docafit_app.fragments.WorkoutDao;
+import com.example.docafit_app.fragments.WorkoutEntry;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -189,6 +191,16 @@ public class profile_Frag extends Fragment {
 
                                                     userRef.removeValue().addOnCompleteListener(removeTask -> {
                                                         if (removeTask.isSuccessful()) {
+                                                            Executor executor = Executors.newSingleThreadExecutor();
+                                                            executor.execute(() -> {
+                                                                ProfileDatabase db = ProfileDatabase.getInstance(requireContext());
+                                                                db.profilePictureDao().deleteAll();
+                                                            });
+                                                            Executor executor_two = Executors.newSingleThreadExecutor();
+                                                            executor_two.execute(() -> {
+                                                                AppDatabase db = AppDatabase.getInstance(requireContext());
+                                                                db.workoutDao().deleteAll();
+                                                            });
                                                             currentUser.delete().addOnCompleteListener(deleteTask -> {
                                                                 if (deleteTask.isSuccessful()) {
                                                                     FirebaseAuth.getInstance().signOut();

@@ -12,4 +12,7 @@ public interface ProfilePictureDao {
 
     @Query("SELECT * FROM profile_picture LIMIT 1")
     ProfilePicture getProfilePicture();
+
+    @Query("DELETE FROM profile_picture")
+    void deleteAll();
 }
