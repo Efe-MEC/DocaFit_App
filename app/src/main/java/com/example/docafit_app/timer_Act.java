@@ -11,8 +11,11 @@ public class timer_Act extends AppCompatActivity {
 
     private TextView countdownText;
     private Button startButton;
-
     private Button finishButton;
+
+    private TextView tvMinutes, tvSeconds;
+    private Button btnIncreaseMinutes, btnDecreaseMinutes, btnIncreaseSeconds, btnDecreaseSeconds;
+
     private CountDownTimer countDownTimer;
     private boolean isRunning = false;
     private long timeLeftInMillis = 300000;
@@ -26,7 +29,14 @@ public class timer_Act extends AppCompatActivity {
         startButton = findViewById(R.id.start_button);
         finishButton = findViewById(R.id.finish_button);
 
-        updateCountdownText();
+        tvMinutes = findViewById(R.id.show_minutes);
+        tvSeconds = findViewById(R.id.show_seconds);
+        btnIncreaseMinutes = findViewById(R.id.plus_minutes_button);
+        btnDecreaseMinutes = findViewById(R.id.minus_minutes_button);
+        btnIncreaseSeconds = findViewById(R.id.plus_seconds_button);
+        btnDecreaseSeconds = findViewById(R.id.minus_seconds_button);
+
+        updateMinuteSecondViews();
 
         startButton.setOnClickListener(v -> {
             if (!isRunning) {
@@ -39,13 +49,41 @@ public class timer_Act extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+
+        btnIncreaseMinutes.setOnClickListener(v -> {
+            timeLeftInMillis += 60000;
+            updateMinuteSecondViews();
+        });
+
+        btnDecreaseMinutes.setOnClickListener(v -> {
+            if (timeLeftInMillis >= 60000) {
+                timeLeftInMillis -= 60000;
+                updateMinuteSecondViews();
+            }
+        });
+
+        btnIncreaseSeconds.setOnClickListener(v -> {
+            if ((timeLeftInMillis / 1000) % 60 < 59) {
+                timeLeftInMillis += 1000;
+            } else {
+                timeLeftInMillis += (1000 - ((timeLeftInMillis / 1000) % 60) * 1000);
+            }
+            updateMinuteSecondViews();
+        });
+
+        btnDecreaseSeconds.setOnClickListener(v -> {
+            if (timeLeftInMillis >= 1000) {
+                timeLeftInMillis -= 1000;
+                updateMinuteSecondViews();
+            }
+        });
     }
 
     private void startTimer() {
         countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
             public void onTick(long millisUntilFinished) {
                 timeLeftInMillis = millisUntilFinished;
-                updateCountdownText();
+                updateMinuteSecondViews();
             }
 
             public void onFinish() {
@@ -57,11 +95,11 @@ public class timer_Act extends AppCompatActivity {
         isRunning = true;
     }
 
-    private void updateCountdownText() {
+    private void updateMinuteSecondViews() {
         int minutes = (int) (timeLeftInMillis / 1000) / 60;
         int seconds = (int) (timeLeftInMillis / 1000) % 60;
 
-        String timeFormatted = String.format(getString(R.string.remain_time_text), minutes, seconds);
-        countdownText.setText(timeFormatted);
+        tvMinutes.setText(String.format("%02d", minutes));
+        tvSeconds.setText(String.format("%02d", seconds));
     }
 }
