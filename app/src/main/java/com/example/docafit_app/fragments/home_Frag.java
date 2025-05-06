@@ -1,5 +1,6 @@
 package com.example.docafit_app.fragments;
 
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -63,15 +64,21 @@ public class home_Frag extends Fragment {
             set.setColor(Color.GREEN);
             lineData.addDataSet(set);
         }
+        int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
 
+        boolean isDarkMode = nightModeFlags == Configuration.UI_MODE_NIGHT_YES;
+
+        int textColor = isDarkMode ? Color.WHITE : Color.DKGRAY;
+
+        chartWorkout.getLegend().setTextColor(textColor);
         chartWorkout.setData(lineData);
         chartWorkout.getDescription().setText(getString(R.string.workout_progress));
-        chartWorkout.getDescription().setTextColor(Color.GRAY);
+        chartWorkout.getDescription().setTextColor(textColor);
         chartWorkout.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         chartWorkout.getXAxis().setDrawGridLines(false);
-        chartWorkout.getXAxis().setTextColor(Color.GRAY);
-        chartWorkout.getAxisLeft().setTextColor(Color.GRAY);
-        chartWorkout.getAxisRight().setTextColor(Color.GRAY);
+        chartWorkout.getXAxis().setTextColor(textColor);
+        chartWorkout.getAxisLeft().setTextColor(textColor);
+        chartWorkout.getAxisRight().setTextColor(textColor);
         chartWorkout.invalidate();
     }
 }
