@@ -1,6 +1,7 @@
 package com.example.docafit_app;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.TextView;
@@ -20,6 +21,8 @@ public class timer_Act extends AppCompatActivity {
     private boolean isRunning = false;
     private long timeLeftInMillis = 300000;
 
+    private MediaPlayer mediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,8 @@ public class timer_Act extends AppCompatActivity {
         btnDecreaseMinutes = findViewById(R.id.minus_minutes_button);
         btnIncreaseSeconds = findViewById(R.id.plus_seconds_button);
         btnDecreaseSeconds = findViewById(R.id.minus_seconds_button);
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.time_up_alarm);
 
         updateMinuteSecondViews();
 
@@ -88,7 +93,7 @@ public class timer_Act extends AppCompatActivity {
 
             public void onFinish() {
                 isRunning = false;
-                countdownText.setText(getString(R.string.time_up));
+                mediaPlayer.start();
             }
         }.start();
 
@@ -101,5 +106,14 @@ public class timer_Act extends AppCompatActivity {
 
         tvMinutes.setText(String.format("%02d", minutes));
         tvSeconds.setText(String.format("%02d", seconds));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 }
