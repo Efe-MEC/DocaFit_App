@@ -1,21 +1,24 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:padding="16dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="45dp">
 
     <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
+        android:gravity="center">
 
         <ImageView
-            android:layout_marginTop="115dp"
             android:id="@+id/profileImageView"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
             android:src="@drawable/ic_default_profile"
-            android:scaleType="centerCrop"
-            android:layout_marginBottom="20dp"/>
+            android:scaleType="centerCrop" />
 
         <Button
             android:id="@+id/selectImageButton"
@@ -23,11 +26,19 @@
             android:layout_height="wrap_content"
             android:text="@string/select_image"
             android:textColor="@color/button_text"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginTop="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
         <EditText
             android:id="@+id/nameEditText"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="50dp"
             android:hint="@string/username"
             android:layout_marginTop="16dp"
@@ -35,7 +46,7 @@
 
         <Spinner
             android:id="@+id/genderSpinner"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
             android:textColor="@color/button_text"
@@ -46,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/save"
-            android:layout_marginTop="24dp"
-            android:textColor="@color/button_text"/>
+            android:textColor="@color/button_text"
+            android:layout_marginTop="24dp"/>
     </LinearLayout>
-</ScrollView>
+</LinearLayout>
