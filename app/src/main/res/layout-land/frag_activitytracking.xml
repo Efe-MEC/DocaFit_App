@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="45dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="0dp"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginEnd="30dp">
+
+            <TextView
+                android:id="@+id/tvBodyMeasurements"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="@string/fat_ratio_calculation_title"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_marginTop="50dp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupGender"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="22dp">
+
+                <RadioButton
+                    android:id="@+id/radioMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/male" />
+
+                <RadioButton
+                    android:id="@+id/radioFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/editHeight"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/height_hint"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp" />
+
+            <EditText
+                android:id="@+id/editNeck"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/neck_hint"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/editWaist"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/waist_hint"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/editHip"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hip_hint"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:layout_marginTop="8dp" />
+
+            <Button
+                android:id="@+id/buttonCalculateBodyFat"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
+                android:text="@string/calculate_body_fat_button"
+                android:textColor="@color/button_text"
+                android:layout_marginTop="18dp" />
+
+            <TextView
+                android:id="@+id/textViewBodyFatResult"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="@string/fat_rate_result"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginTop="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="30dp">
+
+            <TextView
+                android:id="@+id/tvWorkoutTracking"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="@string/lift_tracking_title"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="50dp"
+                android:gravity="center"/>
+
+            <Spinner
+                android:id="@+id/spinnerExercise"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:layout_marginTop="12dp" />
+
+            <EditText
+                android:id="@+id/editWeightUsed"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/weight_hint"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/editReps"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/reps_hint"
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:layout_marginTop="8dp" />
+
+            <Button
+                android:id="@+id/buttonSaveSet"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
+                android:text="@string/save_set_button"
+                android:textColor="@color/button_text"
+                android:layout_marginTop="18dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
