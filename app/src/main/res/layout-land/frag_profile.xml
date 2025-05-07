@@ -49,12 +49,13 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:orientation="vertical"
-            android:layout_marginTop="70dp">
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="70dp">
 
             <LinearLayout
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="12dp"
                 android:gravity="center_vertical"
@@ -83,7 +84,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="12dp"
                 android:orientation="horizontal"
@@ -112,7 +113,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="12dp"
                 android:orientation="horizontal"
@@ -140,7 +141,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="12dp"
                 android:orientation="horizontal"
@@ -177,15 +178,16 @@
                 <Button
                     android:id="@+id/logoutButton"
                     android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="8dp"
                     android:text="@string/logout"
                     android:textColor="@color/button_text" />
 
                 <Button
                     android:id="@+id/deleteAccountButton"
                     android:layout_width="160dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
                     android:text="@string/delete_account"
                     android:textColor="@color/button_text" />
             </LinearLayout>
