@@ -110,14 +110,14 @@
     </string-array>
     <string-array name="area_list">
         <item>Chest</item>
-        <item>Back</item>
-        <item>Glutes</item>
         <item>Abs</item>
-        <item>Biceps</item>
+        <item>Glutes</item>
         <item>Shoulder</item>
-        <item>Triceps</item>
-        <item>Hamstrings</item>
+        <item>Back</item>
         <item>Calves</item>
+        <item>Hamstrings</item>
+        <item>Biceps</item>
+        <item>Triceps</item>
         <item>Forearms</item>
     </string-array>
     <string-array name="exercise_list">

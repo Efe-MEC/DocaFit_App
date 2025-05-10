@@ -53,7 +53,7 @@ public class exerciseSuggestion_Frag extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View itemView, int position, long id) {
                 String selectedRegion = parent.getItemAtPosition(position).toString();
-                String[] englishRegionKeys = {"Abs", "Chest", "Glutes", "Shoulder", "Back", "Calves", "HamStrings", "Biceps", "Triceps", "Forearms"};
+                String[] englishRegionKeys = {"Chest", "Abs", "Glutes", "Shoulder", "Back", "Calves", "HamStrings", "Biceps", "Triceps", "Forearms"};
                 String[] localizedRegionNames = getResources().getStringArray(R.array.area_list);
                 int index = Arrays.asList(localizedRegionNames).indexOf(selectedRegion);
                 if (index != -1) {
@@ -68,7 +68,7 @@ public class exerciseSuggestion_Frag extends Fragment {
 
         button.setOnClickListener(v -> {
             String selectedRegion = spinner.getSelectedItem().toString();
-            String[] englishRegionKeys = {"Abs", "Chest", "Glutes", "Shoulder", "Back", "Calves", "HamStrings", "Biceps", "Triceps", "Forearms"};
+            String[] englishRegionKeys = {"Chest", "Abs", "Glutes", "Shoulder", "Back", "Calves", "HamStrings", "Biceps", "Triceps", "Forearms"};
             String[] localizedRegionNames = getResources().getStringArray(R.array.area_list);
             int index = Arrays.asList(localizedRegionNames).indexOf(selectedRegion);
             if (index != -1) {

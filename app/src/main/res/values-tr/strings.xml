@@ -111,14 +111,14 @@
     </string-array>
     <string-array name="area_list">
         <item>Göğüs</item>
-        <item>Sırt</item>
-        <item>Kalça</item>
         <item>Karın</item>
-        <item>Pazı</item>
+        <item>Kalça</item>
         <item>Omuz</item>
-        <item>Triceps</item>
-        <item>Hamstring</item>
+        <item>Sırt</item>
         <item>Baldırlar</item>
+        <item>Hamstring</item>
+        <item>Pazu</item>
+        <item>Triceps</item>
         <item>Ön kollar</item>
     </string-array>
     <string-array name="exercise_list">
